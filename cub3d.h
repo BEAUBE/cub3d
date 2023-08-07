@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/26 14:03:20 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/08/07 15:20:27 by ajoliet          ###   ########.fr       */
+/*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
+/*   Updated: 2023/08/07 14:39:56 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef CUB3D_H
+# define CUB3D_H
+# include <stdio.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include "MLX42/include/MLX42/MLX42.h"
 
-int main(int argc, char **argv)
+typedef struct s_data
 {
-	t_data	data;
+	mlx_t		*mlxptr;
+	mlx_image_t	*mlximg;
+}	t_data;
 
-}
+#endif
