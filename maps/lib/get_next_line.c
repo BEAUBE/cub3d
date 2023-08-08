@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slepetit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 18:13:38 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/08 00:48:46 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/01/01 15:29:36 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ char	*ft_fill(char *str, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	*save = 0;
+	static char	*save;
 	char		*str;
 	char		*line;
 

@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/08/07 14:39:56 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/08/08 17:51:14 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,15 @@
 
 typedef struct s_data
 {
+	char		**map;
 	mlx_t		*mlxptr;
 	mlx_image_t	*mlximg;
 }	t_data;
+
+void	ft_parsing(t_data *data, char *file, int ac);
+void	ft_filename(char *file, int ac);
+int		ft_strcmp(char *s1, char *s2);
+t_data	*ft_gnl(t_data *data, char *file);
+int		ft_gnl_lines(char *file);
 
 #endif
