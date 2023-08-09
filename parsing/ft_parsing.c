@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:36:09 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/08 01:36:10 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/09 14:56:23 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,53 @@ void	ft_filename(char *file, int ac)
 	}
 }
 
+int	is_valid_element(char *line)
+{
+	int i;
+	
+	skip_spaces(line, &i);
+	if (line[i] && (ft_strncmp(&line[i], "NO ", 3) || ft_strncmp(&line[i], "SO ", 3) ||
+		ft_strncmp(&line[i], "EA ", 3) || ft_strncmp(&line[i], "WE ", 3)))
+	{
+		i += 3;
+		skip_spaces(line, &i);
+		while (line[i] && line[i] != ' ')
+			i++;
+	}	
+	else
+		return (0);
+	if (line[i])
+		skip_spaces(line, &i);
+	return (1);
+}
+
+int	add_to_data(t_data *data, char *line)
+{
+	int i;
+
+	i = 0;
+	if (!is_valid_element(line))//' ' direction ' ' path ' ' // pas plus 
+	return (0);
+}
+
+void	ft_collect_infos(char *file, t_data *data)
+{
+	char *line;
+	int i;
+	int fd;
+
+	fd = open(file, O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		add_to_data(data, line);
+		line = get_next_line(fd);
+	}
+}
+
 void	ft_parsing(t_data *data, char *file, int ac)
 {
 	ft_filename(file, ac);
-	ft_gnl(data, file);
+//	ft_gnl(data, file);
+	ft_collect_infos(file, data);
 }

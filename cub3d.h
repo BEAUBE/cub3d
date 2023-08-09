@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/08/08 18:02:55 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/08/09 14:53:36 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,22 @@
 # include <fcntl.h>
 # include "MLX42/include/MLX42/MLX42.h"
 
+# define NO 0
+# define SO 1
+# define EA 2
+# define WE 3
+# define S 4
+# define F 5
+
+typedef struct s_text_path
+{
+	char	*paths[4];
+	int		*fds[4];
+}	t_text_path;
+
 typedef struct s_data
 {
+	t_text_path	text_path;
 	char		**map;
 	mlx_t		*mlxptr;
 	mlx_image_t	*mlximg;
@@ -30,5 +44,6 @@ void	ft_filename(char *file, int ac);
 int		ft_strcmp(char *s1, char *s2);
 t_data	*ft_gnl(t_data *data, char *file);
 int		ft_gnl_lines(char *file);
+void	skip_spaces(char *line, int *i);
 
 #endif
