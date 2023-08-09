@@ -6,12 +6,13 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/08/08 17:51:14 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/08/08 18:02:55 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+# include "lib/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
