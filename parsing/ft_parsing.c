@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:36:09 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/09 14:56:23 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/08/09 18:45:32 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,32 +74,38 @@ void	ft_filename(char *file, int ac)
 	}
 }
 
-int	is_valid_element(char *line)
+int	ft_tablen(char **tab)
 {
-	int i;
-	
-	skip_spaces(line, &i);
-	if (line[i] && (ft_strncmp(&line[i], "NO ", 3) || ft_strncmp(&line[i], "SO ", 3) ||
-		ft_strncmp(&line[i], "EA ", 3) || ft_strncmp(&line[i], "WE ", 3)))
-	{
-		i += 3;
-		skip_spaces(line, &i);
-		while (line[i] && line[i] != ' ')
-			i++;
-	}	
-	else
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
+}
+
+int	check_nbr_element(char *line)
+{
+	char **tab;
+	static int	nbr_infos;
+
+	tab = ft_split(line, ' ');
+	if (tab[0][0] == '\n')
+		return (1);
+	if (ft_tablen(tab) != 3)
 		return (0);
-	if (line[i])
-		skip_spaces(line, &i);
+	else
+		nbr_infos += 1;
+	if (nbr_infos == 7)
+		return (0);
+	if (nbr_infos < 7 && ft_isdigit(tab[0][0]))
+		return (0);
 	return (1);
 }
 
 int	add_to_data(t_data *data, char *line)
 {
-	int i;
-
-	i = 0;
-	if (!is_valid_element(line))//' ' direction ' ' path ' ' // pas plus 
+	check_nbr_element(line);
 	return (0);
 }
 
@@ -111,11 +117,13 @@ void	ft_collect_infos(char *file, t_data *data)
 
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
-	while (line)
+	while (line != NULL)
 	{
 		add_to_data(data, line);
+		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 }
 
 void	ft_parsing(t_data *data, char *file, int ac)

@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/08/09 14:53:36 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/08/09 17:49:49 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,21 @@
 # define S 4
 # define F 5
 
-typedef struct s_text_path
+typedef struct s_graphics
 {
-	char	*paths[4];
-	int		*fds[4];
-}	t_text_path;
+	char	*path_north;
+	char	*path_south;
+	char	*path_east;
+	char	*path_west;
+	int		fd_north;
+	int		fd_south;
+	int		fd_east;
+	int		fd_west;
+}	t_graphics;
 
 typedef struct s_data
 {
-	t_text_path	text_path;
+	t_graphics	graphics;
 	char		**map;
 	mlx_t		*mlxptr;
 	mlx_image_t	*mlximg;
