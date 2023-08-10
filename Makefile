@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: axcallet <axcallet@student.42.fr>          +#+  +:+       +#+         #
+#    By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/07 10:04:45 by axcallet          #+#    #+#              #
-#    Updated: 2023/08/08 17:53:29 by ajoliet          ###   ########.fr        #
+#    Updated: 2023/08/10 02:23:54 by slepetit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ LIB =  $(MAKE_LIBFT) $(MAKE_LIBX) -ldl -lglfw -pthread -lm
 ################## SRC ###################
 SRC = main.c \
 	parsing/ft_parsing.c \
-	parsing/ft_utils.c 
+	parsing/ft_utils.c \
+	parsing/ft_free.c
 
 
 ##########################################

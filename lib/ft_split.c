@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slepetit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 19:46:51 by slepetit          #+#    #+#             */
-/*   Updated: 2022/04/15 19:36:44 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/10 02:08:48 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	**ft_split(char *s, char c)
 	if (!tab)
 		return (NULL);
 	while (*s && *s == c)
-		i++;
+		s++;
 	while (s[i])
 	{
 		if (s[i] != c)

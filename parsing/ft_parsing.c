@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:36:09 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/09 18:45:32 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/08/10 02:21:18 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_data	*ft_gnl(t_data *data, char *file)
 	}
 	data->map = ft_split(s, '\n');
 	free(s);
+	close(fd);
 	return (data);
 }
 
@@ -91,15 +92,27 @@ int	check_nbr_element(char *line)
 
 	tab = ft_split(line, ' ');
 	if (tab[0][0] == '\n')
+	{
+		ft_free_tab(tab);
 		return (1);
+	}
 	if (ft_tablen(tab) != 3)
+	{
+		ft_free_tab(tab);
 		return (0);
+	}
 	else
 		nbr_infos += 1;
 	if (nbr_infos == 7)
+	{
+		ft_free_tab(tab);
 		return (0);
+	}
 	if (nbr_infos < 7 && ft_isdigit(tab[0][0]))
+	{
+		ft_free_tab(tab);
 		return (0);
+	}
 	return (1);
 }
 
@@ -117,13 +130,16 @@ void	ft_collect_infos(char *file, t_data *data)
 
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
-	while (line != NULL)
+	while (line)
 	{
 		add_to_data(data, line);
 		free(line);
 		line = get_next_line(fd);
+		if (line)
+			ft_printf("%s", line);
 	}
 	free(line);
+	close(fd);
 }
 
 void	ft_parsing(t_data *data, char *file, int ac)

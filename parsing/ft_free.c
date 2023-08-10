@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 23:28:47 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/10 02:21:31 by slepetit         ###   ########.fr       */
+/*   Created: 2023/08/10 02:21:47 by slepetit          #+#    #+#             */
+/*   Updated: 2023/08/10 02:24:29 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	skip_spaces(char *line, int *i)
-{
-	while (line[*i])
-		*i += 1;
-}
-
-int	ft_strcmp(char *s1, char *s2)
+void	ft_free_tab(char **tab)
 {
 	int	i;
 
 	i = 0;
-	while (s1[i] && (s1[i] == s2[i]))
-		i++;
-	return (s1[i] - s2[i]);
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
 }
