@@ -5,10 +5,11 @@
 #                                                     +:+ +:+         +:+      #
 #    By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/07 10:04:45 by axcallet          #+#    #+#              #
-#    Updated: 2023/08/10 02:23:54 by slepetit         ###   ########.fr        #
+#    Created: 2023/08/10 16:27:12 by slepetit          #+#    #+#              #
+#    Updated: 2023/08/10 16:27:13 by slepetit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME = cub3d
 SRC_DIR = src
@@ -27,7 +28,8 @@ LIB =  $(MAKE_LIBFT) $(MAKE_LIBX) -ldl -lglfw -pthread -lm
 SRC = main.c \
 	parsing/ft_parsing.c \
 	parsing/ft_utils.c \
-	parsing/ft_free.c
+	parsing/ft_free.c \
+	parsing/ft_map.c
 
 
 ##########################################
