@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:08:51 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/10 16:21:14 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/15 15:06:41 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_error_map(t_data *data)
 {
 	ft_free_tab(data->map);
-	free(data);
+//	free(data);
 	exit(2);
 }
 
@@ -24,7 +24,7 @@ int	ft_components(char c, int *pos)
 	if (c != '1' && c != '0' && c!= 'N' && c != 'S' && c != 'E' && c != 'W')
 		return (1);
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		*pos += 1
+		*pos += 1;
 	if (*pos > 1)
 		return (1);
 	return (0);

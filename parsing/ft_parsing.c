@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:36:09 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/10 16:21:44 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/15 15:12:25 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_gnl_lines(char *file)
 	return (lines);
 }
 
-t_data	*ft_gnl(t_data *data, char *file)
+char	**ft_gnl(t_data *data, char *file)
 {
 	char	*s;
 	char	*tmp;
@@ -50,7 +50,7 @@ t_data	*ft_gnl(t_data *data, char *file)
 	data->map = ft_split(s, '\n');
 	free(s);
 	close(fd);
-	return (data);
+	return (data->map);
 }
 
 void	ft_filename(char *file, int ac)
@@ -145,7 +145,7 @@ void	ft_collect_infos(char *file, t_data *data)
 void	ft_parsing(t_data *data, char *file, int ac)
 {
 	ft_filename(file, ac);
-	ft_gnl(data, file);
-	ft_map(data, data->map);
+	data->map = ft_gnl(data, file);
+//	ft_map(data, data->map);
 	// ft_collect_infos(file, data);
 }

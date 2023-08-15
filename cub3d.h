@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/08/10 16:22:38 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/15 14:44:16 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_parsing(t_data *data, char *file, int ac);
 void	ft_filename(char *file, int ac);
 void	ft_free_tab(char **tab);
 int		ft_strcmp(char *s1, char *s2);
-t_data	*ft_gnl(t_data *data, char *file);
+char	**ft_gnl(t_data *data, char *file);
 int		ft_gnl_lines(char *file);
 int		ft_map(t_data *data, char **s);
 int		ft_components(char c, int *pos);
