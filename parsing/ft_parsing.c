@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:36:09 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/15 15:12:25 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/08/16 01:12:59 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_gnl_lines(char *file)
 	return (lines);
 }
 
-char	**ft_gnl(t_data *data, char *file)
+t_main	*ft_gnl(t_main *main, char *file)
 {
 	char	*s;
 	char	*tmp;
@@ -34,10 +34,10 @@ char	**ft_gnl(t_data *data, char *file)
 
 	i = 0;
 	fd = open(file, O_RDONLY);
-	data = ft_calloc(sizeof(t_data), 1);
-	if (!data)
+	main = ft_calloc(sizeof(t_main), 1);
+	if (!main)
 		return (NULL);
-	data->map = ft_calloc(sizeof(char), ft_gnl_lines(file) + 1);
+	main->map = ft_calloc(sizeof(char), ft_gnl_lines(file) + 1);
 	s = ft_calloc(sizeof(char), 1);
 	*s = 0;
 	tmp = get_next_line(fd);
@@ -47,10 +47,10 @@ char	**ft_gnl(t_data *data, char *file)
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
-	data->map = ft_split(s, '\n');
+	main->map = ft_split(s, '\n');
 	free(s);
 	close(fd);
-	return (data->map);
+	return (main);
 }
 
 void	ft_filename(char *file, int ac)
@@ -116,23 +116,23 @@ int	check_nbr_element(char *line)
 	return (1);
 }
 
-int	add_to_data(t_data *data, char *line)
+int	add_to_main(t_main *main, char *line)
 {
+	(void)main;
 	check_nbr_element(line);
 	return (0);
 }
 
-void	ft_collect_infos(char *file, t_data *data)
+void	ft_collect_infos(char *file, t_main *main)
 {
 	char *line;
-	int i;
 	int fd;
 
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
 	{
-		add_to_data(data, line);
+		add_to_main(main, line);
 		free(line);
 		line = get_next_line(fd);
 		if (line)
@@ -142,10 +142,10 @@ void	ft_collect_infos(char *file, t_data *data)
 	close(fd);
 }
 
-void	ft_parsing(t_data *data, char *file, int ac)
+void	ft_parsing(t_main *main, char *file, int ac)
 {
 	ft_filename(file, ac);
-	data->map = ft_gnl(data, file);
-//	ft_map(data, data->map);
+	ft_gnl(main, file);
+	ft_map(main, main->map);
 	// ft_collect_infos(file, data);
 }
