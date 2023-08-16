@@ -5,6 +5,7 @@ SRC = ft_atoi.c \
       ft_isdigit.c \
       ft_memcmp.c \
       ft_strchr.c \
+      ft_strcmp.c \
       ft_strncmp.c \
       ft_toupper.c \
       ft_bzero.c \
@@ -36,11 +37,11 @@ SRC = ft_atoi.c \
       ft_split.c \
       ft_putchar.c \
       ft_putstr.c \
-	  ft_puthexa.c \
-	  ft_putptr.c \
-	  ft_putu.c \
-	  ft_printf.c \
-	  ft_type.c \
+	ft_puthexa.c \
+	ft_putptr.c \
+	ft_putu.c \
+	ft_printf.c \
+	ft_type.c \
       get_next_line.c \
       ft_putnbr.c
 

@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 23:28:47 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/16 02:20:40 by slepetit         ###   ########.fr       */
+/*   Created: 2023/08/16 01:58:40 by slepetit          #+#    #+#             */
+/*   Updated: 2023/08/16 01:59:19 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "libft.h"
 
-void	skip_spaces(char *line, int *i)
-{
-	while (line[*i])
-		*i += 1;
-}
-
-int	ft_tablen(char **tab)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	while (tab[i])
+	while (s1[i] && (s1[i] == s2[i]))
 		i++;
-	return (i);
+	return (s1[i] - s2[i]);
 }

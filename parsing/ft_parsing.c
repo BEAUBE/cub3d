@@ -6,13 +6,13 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:36:09 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/16 01:12:59 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/16 02:30:12 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	ft_gnl_lines(char *file)
+int	ft_get_lines(char *file)
 {
 	int	lines;
 	int	fd;
@@ -25,7 +25,7 @@ int	ft_gnl_lines(char *file)
 	return (lines);
 }
 
-t_main	*ft_gnl(t_main *main, char *file)
+t_parse	*ft_get_file(t_parse *parse, char *file)
 {
 	char	*s;
 	char	*tmp;
@@ -34,10 +34,7 @@ t_main	*ft_gnl(t_main *main, char *file)
 
 	i = 0;
 	fd = open(file, O_RDONLY);
-	main = ft_calloc(sizeof(t_main), 1);
-	if (!main)
-		return (NULL);
-	main->map = ft_calloc(sizeof(char), ft_gnl_lines(file) + 1);
+	parse->map = ft_calloc(sizeof(char), ft_get_lines(file) + 1);
 	s = ft_calloc(sizeof(char), 1);
 	*s = 0;
 	tmp = get_next_line(fd);
@@ -47,10 +44,10 @@ t_main	*ft_gnl(t_main *main, char *file)
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
-	main->map = ft_split(s, '\n');
+	parse->map = ft_split(s, '\n');
 	free(s);
 	close(fd);
-	return (main);
+	return (parse);
 }
 
 void	ft_filename(char *file, int ac)
@@ -75,77 +72,11 @@ void	ft_filename(char *file, int ac)
 	}
 }
 
-int	ft_tablen(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		i++;
-	return (i);
-}
-
-int	check_nbr_element(char *line)
-{
-	char **tab;
-	static int	nbr_infos;
-
-	tab = ft_split(line, ' ');
-	if (tab[0][0] == '\n')
-	{
-		ft_free_tab(tab);
-		return (1);
-	}
-	if (ft_tablen(tab) != 3)
-	{
-		ft_free_tab(tab);
-		return (0);
-	}
-	else
-		nbr_infos += 1;
-	if (nbr_infos == 7)
-	{
-		ft_free_tab(tab);
-		return (0);
-	}
-	if (nbr_infos < 7 && ft_isdigit(tab[0][0]))
-	{
-		ft_free_tab(tab);
-		return (0);
-	}
-	return (1);
-}
-
-int	add_to_main(t_main *main, char *line)
-{
-	(void)main;
-	check_nbr_element(line);
-	return (0);
-}
-
-void	ft_collect_infos(char *file, t_main *main)
-{
-	char *line;
-	int fd;
-
-	fd = open(file, O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
-	{
-		add_to_main(main, line);
-		free(line);
-		line = get_next_line(fd);
-		if (line)
-			ft_printf("%s", line);
-	}
-	free(line);
-	close(fd);
-}
-
 void	ft_parsing(t_main *main, char *file, int ac)
 {
 	ft_filename(file, ac);
-	ft_gnl(main, file);
-	ft_map(main, main->map);
+	ft_init_struct(main);
+	ft_get_file(main->parse, file);
 	// ft_collect_infos(file, data);
+	ft_map(main, main->parse->map);
 }

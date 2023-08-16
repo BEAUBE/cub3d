@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/08/16 01:11:53 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/16 02:23:24 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,35 @@ typedef struct s_main
 	char		**map;
 	mlx_t		*mlxptr;
 	mlx_image_t	*mlximg;
-	t_textures	textures;
-	t_parse		parse;
+	t_textures	*textures;
+	t_parse		*parse;
 }	t_main;
 
-void	ft_parsing(t_main *main, char *file, int ac);
-void	ft_filename(char *file, int ac);
+// INIT STRUCT
+t_main	*ft_init_struct(t_main *main);
+
+// FREE
 void	ft_free_tab(char **tab);
-int		ft_strcmp(char *s1, char *s2);
-t_main	*ft_gnl(t_main *main, char *file);
-int		ft_gnl_lines(char *file);
-int		ft_map(t_main *main, char **s);
-int		ft_components(char c, int *pos);
-void	ft_error_map(t_main *main);
+
+// UTILS
 void	skip_spaces(char *line, int *i);
+int		ft_tablen(char **tab);
+
+// IDENTIFIERS
+int		check_nbr_element(char *line);
+int		add_to_main(t_main *main, char *line);
+void	ft_collect_infos(char *file, t_main *main);
+
+// MAP
+void	ft_error_map(t_main *main, int *pos);
+int		ft_components(char c, int *pos);
+int		ft_map(t_main *main, char **s);
+
+// PARSE
+int		ft_get_lines(char *file);
+t_parse	*ft_get_file(t_parse *parse, char *file);
+void	ft_filename(char *file, int ac);
+void	ft_parsing(t_main *main, char *file, int ac);
+
 
 #endif
