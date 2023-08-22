@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/08/16 02:23:24 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/22 07:03:25 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,53 +22,65 @@
 # define SO 1
 # define EA 2
 # define WE 3
-# define S 4
-# define F 5
 
 typedef struct s_parse
 {
 	char	**map;
+	int		lim;
 	int		components;
 	char	**identifiers;
 	char	*no;
 	char	*so;
 	char	*we;
-	char	*wa;
-	char	*floor;
-	char	*ceiling;
+	char	*ea;
+	int		f[3];
+	int		c[3];
 }	t_parse;
 
 typedef struct s_textures
 {
-	int		fd_no;
-	int		fd_we;
-	int		fd_ea;
-	int		fd_west;
+	int			fd_no;
+	int			fd_we;
+	int			fd_ea;
+	int			fd_west;
+	int			f[3];
+	int			c[3];
 }	t_textures;
+
+typedef struct	s_game // si ca va pour Bob
+{
+	char		**map;
+	int			pos[2];
+	int			orientation;
+	t_textures	*textures;
+}	t_game;
 
 typedef struct s_main
 {
-	char		**map;
 	mlx_t		*mlxptr;
 	mlx_image_t	*mlximg;
-	t_textures	*textures;
+	t_game		*game; // pas rempli encore
 	t_parse		*parse;
 }	t_main;
 
 // INIT STRUCT
 t_main	*ft_init_struct(t_main *main);
 
-// FREE
+// FREE ERROR
+void	ft_error_identifiers(t_parse *parse, char **id, char *line);
+void	ft_error_map(t_main *main, int *pos);
 void	ft_free_tab(char **tab);
 
 // UTILS
+int	ft_is_fill(t_parse *parse, char *s, char **id, char *line);
+int		ft_all_identifiers(t_parse *parse);
 void	skip_spaces(char *line, int *i);
 int		ft_tablen(char **tab);
 
 // IDENTIFIERS
 int		check_nbr_element(char *line);
-int		add_to_main(t_main *main, char *line);
-void	ft_collect_infos(char *file, t_main *main);
+int		add_to_main(char *line);
+void	ft_identifiers(t_parse *parse, char *file);
 
 // MAP
 void	ft_error_map(t_main *main, int *pos);
@@ -80,6 +92,5 @@ int		ft_get_lines(char *file);
 t_parse	*ft_get_file(t_parse *parse, char *file);
 void	ft_filename(char *file, int ac);
 void	ft_parsing(t_main *main, char *file, int ac);
-
 
 #endif

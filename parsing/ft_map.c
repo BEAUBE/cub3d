@@ -6,21 +6,11 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:08:51 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/16 02:27:16 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/22 02:53:38 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void	ft_error_map(t_main *main, int *pos)
-{
-	if (*pos == 0)
-		write(2, "Map must be composed with 0,1,N,S,E,W\n", 38);
-	else if (*pos > 1)
-		write(2, "Map must be composed with only one player position\n", 51);
-	ft_free_tab(main->parse->map);
-	exit(2);
-}
 
 int	ft_components(char c, int *pos)
 {

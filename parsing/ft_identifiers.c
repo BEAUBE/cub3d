@@ -6,64 +6,105 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 02:17:43 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/16 02:21:29 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/22 06:55:11 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	check_nbr_element(char *line)
+void	ft_rgb(t_parse *parse, char **id, char **rgb, char *line)
 {
-	char **tab;
-	static int	nbr_infos;
-
-	tab = ft_split(line, ' ');
-	if (tab[0][0] == '\n')
+	(void)line;
+	if (!ft_strcmp(id[0], "F"))
 	{
-		ft_free_tab(tab);
-		return (1);
+		parse->f[0] = ft_atoi(rgb[0]);
+		parse->f[1] = ft_atoi(rgb[1]);
+		parse->f[2] = ft_atoi(rgb[2]);
 	}
-	if (ft_tablen(tab) != 3)
+	else if (!ft_strcmp(id[0], "C"))
 	{
-		ft_free_tab(tab);
-		return (0);
+		parse->c[0] = ft_atoi(rgb[0]);
+		parse->c[1] = ft_atoi(rgb[1]);
+		parse->c[2] = ft_atoi(rgb[2]);
 	}
-	else
-		nbr_infos += 1;
-	if (nbr_infos == 7)
-	{
-		ft_free_tab(tab);
-		return (0);
-	}
-	if (nbr_infos < 7 && ft_isdigit(tab[0][0]))
-	{
-		ft_free_tab(tab);
-		return (0);
-	}
-	return (1);
 }
 
-int	add_to_main(t_main *main, char *line)
+void	ft_info(t_parse *parse, char **id, char *line)
 {
-	(void)main;
-	check_nbr_element(line);
-	return (0);
+	char	**rgb;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	rgb = ft_split(id[1], ',');
+	if (ft_tablen(rgb) != 3)
+	{
+		ft_free_tab(rgb);
+		ft_error_identifiers(parse, id, line);
+	}
+	while (rgb[i])
+	{
+		while (rgb[i][j])
+		{
+			if (!ft_isdigit(rgb[i][j]))
+			{
+				ft_free_tab(rgb);
+				ft_error_identifiers(parse, id, line);
+			}
+			j++;
+		}
+		i++;
+	}
+	ft_rgb(parse, id, rgb, line);
 }
 
-void	ft_collect_infos(char *file, t_main *main)
+void	ft_id(t_parse *parse, char **id, char *line)
 {
-	char *line;
-	int fd;
+	if (!ft_strcmp(id[0], "NO") && ft_is_fill(parse, parse->no, id, line))
+		parse->no = ft_strdup(id[1]);
+	else if (!ft_strcmp(id[0], "SO") && ft_is_fill(parse, parse->so, id, line))
+		parse->so = ft_strdup(id[1]);
+	else if (!ft_strcmp(id[0], "WE") && ft_is_fill(parse, parse->we, id, line))
+		parse->we = ft_strdup(id[1]);
+	else if (!ft_strcmp(id[0], "EA") && ft_is_fill(parse, parse->ea, id, line))
+		parse->ea = ft_strdup(id[1]);
+	else if (!ft_strcmp(id[0], "F"))
+		ft_info(parse, id, line);
+	else if (!ft_strcmp(id[0], "C"))
+		ft_info(parse, id, line);
+	else if (ft_strlen(line) == 1 && *line != '\n')
+		ft_error_identifiers(parse, id, line);
+}
 
+void	ft_check_line(t_parse *parse, char *line)
+{
+	char	**id;
+	
+	id = ft_split(line, 32);
+	if (ft_tablen(id) != 2 && ft_tablen(id) != 4
+			&& ft_strlen(line) == 1 && *line != '\n')
+		ft_error_identifiers(parse, id, line);
+	ft_id(parse, id, line);
+
+}
+
+void	ft_identifiers(t_parse *parse, char *file)
+{
+	char	*line;
+	int		fd;
+	int		limit;
+
+	limit = 0;
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
 	{
-		add_to_main(main, line);
+		ft_check_line(parse, line);
+		if (ft_all_identifiers(parse))
+			break ;
 		free(line);
 		line = get_next_line(fd);
-		if (line)
-			ft_printf("%s", line);
 	}
 	free(line);
 	close(fd);
