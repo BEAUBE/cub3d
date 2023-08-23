@@ -1,9 +1,13 @@
-SO oo
-NO oo
-EA oo
-WE oo
+SO textures/oo
+NO textures/oo
+
+
+EA textures/oo
+
+WE textures/oo
+
 F 20,20,6
-C 20,20,4
+C 20,255,0
 
 
 

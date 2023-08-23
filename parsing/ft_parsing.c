@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:36:09 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/22 07:02:21 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/23 05:30:35 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,20 +126,6 @@ void	ft_parsing(t_main *main, char *file, int ac)
 	ft_get_file(main->parse, file);
 	ft_identifiers(main->parse, file);
 	ft_resize_map(main->parse);
-	/*
-	ft_map(main, main->parse->map);
-	COUCOU
-	Tout ne marche pas encore correctement donc si tu vois ca tu peux
-	remplir en brut, il vaut mieux, il manque quelques trucs a part la map qui va bien
-	main->parse->no =
-	main->parse->so =
-	main->parse->we =
-	main->parse->ea =
-	main->parse->f[0] =
-	main->parse->f[1] =
-	main->parse->f[2] =
-	main->parse->c[0] =
-	main->parse->c[1] =
-	main->parse->c[2] =
-	*/
+	// ft_map();
+	ft_fill_game(main, main->parse);
 }

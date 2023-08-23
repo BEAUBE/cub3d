@@ -6,7 +6,7 @@
 #    By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 16:27:12 by slepetit          #+#    #+#              #
-#    Updated: 2023/08/22 07:04:31 by slepetit         ###   ########.fr        #
+#    Updated: 2023/08/23 05:54:15 by slepetit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC = main.c \
 	parsing/ft_identifiers.c \
 	parsing/ft_identifiers_utils.c \
 	parsing/ft_map.c \
-	parsing/ft_error.c
+	parsing/ft_error.c \
+	parsing/ft_fill_game.c
 
 LIBDIR = lib
 LIBLIB = lib/libft.a

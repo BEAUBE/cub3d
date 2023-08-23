@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 02:52:42 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/22 04:57:30 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/23 05:26:22 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ void	ft_error_identifiers(t_parse *parse, char **id, char *line)
 {
 	ft_free_tab(id);
 	free(line);
-	ft_free_tab(parse->map);
-	free(parse);
 	ft_putstr_fd("Error\nWrong identifiers\n", 2);
-	exit(2);
+	ft_free_parse(parse, 2);
 }
 
 void	ft_error_map(t_main *main, int *pos)
@@ -30,5 +28,5 @@ void	ft_error_map(t_main *main, int *pos)
 		ft_putstr_fd("Error\nMap must be composed with only one player \
 			position\n", 2);
 	ft_free_tab(main->parse->map);
-	exit(2);
+	ft_free_parse(main->parse, 2);
 }
