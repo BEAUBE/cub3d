@@ -6,27 +6,39 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 02:52:42 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/23 05:26:22 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/25 04:51:40 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+void	ft_error_pos(t_parse *parse, t_game *game)
+{
+	ft_free_tab(game->map);
+	free(game);
+	ft_putstr_fd("Error\nWrong position", 2);
+	ft_free_parse(parse, 2);
+}
+
 void	ft_error_identifiers(t_parse *parse, char **id, char *line)
 {
-	ft_free_tab(id);
+	if (id)
+		ft_free_tab(id);
 	free(line);
 	ft_putstr_fd("Error\nWrong identifiers\n", 2);
 	ft_free_parse(parse, 2);
 }
 
-void	ft_error_map(t_main *main, int *pos)
+void	ft_error_map(t_parse *parse, char **tmp)
 {
-	if (*pos == 0)
-		ft_putstr_fd("Error\nMap must be composed with 0,1,N,S,E,W\n", 2);
-	else if (*pos > 1)
-		ft_putstr_fd("Error\nMap must be composed with only one player \
-			position\n", 2);
-	ft_free_tab(main->parse->map);
-	ft_free_parse(main->parse, 2);
+	ft_free_tab(tmp);
+	ft_putstr_fd("Error\nMap is not closed", 2);
+	ft_free_parse(parse, 2);
+}
+
+void	ft_error_newline(t_parse *parse, char **new)
+{
+	ft_free_tab(new);
+	ft_putstr_fd("Error\nNewline in map", 2);
+	ft_free_parse(parse, 2);
 }

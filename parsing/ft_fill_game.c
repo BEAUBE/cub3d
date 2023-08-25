@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 05:32:32 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/23 06:05:14 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/25 04:53:20 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,36 +40,42 @@ void	ft_orientation(t_game *game, char c)
 		game->orientation = 4;
 }
 
-void    ft_find_pos(char **map, t_game *game)
+int	ft_find_pos(char **map, t_game *game)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = 0;
-    while (map[i])
-    {
-        j = 0;
-        while (map[i][j])
-        {
-            if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E'
-                || map[i][j] == 'W')
-            {
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E'
+					|| map[i][j] == 'W')
+			{
+				if (game->orientation)
+					return (0);
 				game->px = j;
 				game->py = i;
 				ft_orientation(game, map[i][j]);
-            }
-            j++;
-        }
-        i++;
-    }
+			}
+			j++;
+		}
+		i++;
+	}
+	if (!game->orientation)
+		return (0);
+	return (1);
 }
 
-void    ft_fill_game(t_main *main, t_parse *parse)
+void	ft_fill_game(t_main *main, t_parse *parse)
 {
-    main->game = ft_calloc(sizeof(t_game), 1);
-    main->game->textures = ft_calloc(sizeof(t_textures), 1);
-    ft_find_pos(parse->map, main->game);
+	main->game = ft_calloc(sizeof(t_game), 1);
+	if (!ft_find_pos(parse->map, main->game))
+		ft_error_pos(parse, main->game);
 	ft_cpy_map(parse->map, main->game);
+	main->game->textures = ft_calloc(sizeof(t_textures), 1);
 	main->game->textures->no = ft_strdup(parse->no);
 	main->game->textures->so = ft_strdup(parse->so);
 	main->game->textures->we = ft_strdup(parse->we);

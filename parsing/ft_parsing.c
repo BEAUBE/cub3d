@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:36:09 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/23 05:30:35 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/25 04:43:41 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_limit(char **map)
 	int	i;
 	int	count;
 	int	lim;
-	
+
 	i = 0;
 	count = 0;
 	lim = 0;
@@ -36,7 +36,7 @@ int	ft_limit(char **map)
 	return (lim);
 }
 
-char	*ft_resize_map(t_parse *parse)
+char	*ft_get_map(t_parse *parse)
 {
 	char	**new;
 	int		i;
@@ -50,6 +50,8 @@ char	*ft_resize_map(t_parse *parse)
 	while (parse->map[lim])
 	{
 		new[i] = ft_strdup(parse->map[lim]);
+		if (parse->map[lim][0] == '\n')
+			ft_error_newline(parse, new);
 		ft_printf("%s\n", new[i]);
 		lim++;
 		i++;
@@ -119,13 +121,19 @@ void	ft_filename(char *file, int ac)
 	}
 }
 
-void	ft_parsing(t_main *main, char *file, int ac)
+t_main	*ft_parsing(t_main *main, char *file, int ac)
 {
 	ft_filename(file, ac);
-	ft_init_struct(main);
-	ft_get_file(main->parse, file);
-	ft_identifiers(main->parse, file);
-	ft_resize_map(main->parse);
-	// ft_map();
-	ft_fill_game(main, main->parse);
+	main->parse = ft_calloc(sizeof(t_parse), 1);
+	if (!main->parse)
+		return (NULL);
+	else
+	{
+		ft_identifiers(main->parse, file);
+		// ft_get_file(main->parse, file);
+		ft_get_map(main->parse);
+		ft_map(main->parse);
+		ft_fill_game(main, main->parse);
+	}
+	return (main);
 }

@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_struct.c                                   :+:      :+:    :+:   */
+/*   ft_map_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 01:54:08 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/23 05:15:48 by slepetit         ###   ########.fr       */
+/*   Created: 2023/08/25 02:22:24 by slepetit          #+#    #+#             */
+/*   Updated: 2023/08/25 03:41:07 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-t_main    *ft_init_struct(t_main *main)
+int	ft_longer_line(char **map)
 {
-    main->parse = ft_calloc(sizeof(t_parse), 1);
-    if (!main->parse)
-        return (NULL);
-    return (main);
+	size_t	i;
+	size_t	longer;
+
+	longer = 0;
+	i = 0;
+	while (map[i])
+	{
+		if (ft_strlen(map[i]) > longer)
+			longer = ft_strlen(map[i]);
+		i++;
+	}
+	return (longer);
 }

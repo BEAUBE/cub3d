@@ -6,13 +6,42 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 04:21:42 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/23 05:26:04 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/25 04:50:51 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_check_parse(t_parse *parse)
+int	ft_spaces(char *line)
+{
+	size_t	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != 32 && i != ft_strlen(line) - 1)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+char	**ft_fill_rgb(t_parse *parse, char **id, char *line)
+{
+	char	**rgb;
+
+	rgb = ft_split(id[1], ',');
+	if (ft_tablen(rgb) != 3)
+	{
+		ft_free_tab(rgb);
+		ft_error_identifiers(parse, id, line);
+	}
+	if (rgb[2][ft_strlen(rgb[2]) - 1] == '\n')
+		rgb[2][ft_strlen(rgb[2]) - 1] = 0;
+	return (rgb);
+}
+
+void	ft_check_identifiers(t_parse *parse)
 {
 	int	i;
 
@@ -28,7 +57,7 @@ void	ft_check_parse(t_parse *parse)
 	while (i != 3)
 	{
 		if ((parse->f[i] < 0 || parse->f[i] > 255)
-			|| parse->c[i] < 0 || parse->c[i] > 255) 
+			|| parse->c[i] < 0 || parse->c[i] > 255)
 		{
 			ft_putstr_fd("Error\nColors must be between 0 and 255\n", 2);
 			ft_free_parse(parse, 2);

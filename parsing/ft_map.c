@@ -6,42 +6,94 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:08:51 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/22 02:53:38 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/25 04:52:51 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	ft_components(char c, int *pos)
+char	**ft_fill_tmp(char **tmp, char **map)
 {
-	if (c != '1' && c != '0' && c!= 'N' && c != 'S' && c != 'E' && c != 'W')
-		return (1);
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		*pos += 1;
-	if (*pos > 1)
-		return (1);
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			tmp[i + 2][j + 2] = map[i][j];
+			j++;
+		}
+		i++;
+	}
+	return (tmp);
+}
+
+char	**ft_set_tmp(int height, int width)
+{
+	char	**tmp;
+	int		i;
+	int		j;
+
+	i = 0;
+	tmp = ft_calloc(sizeof(char *), height + 1);
+	if (!tmp)
+		return (NULL);
+	while (i < height)
+	{
+		j = 0;
+		tmp[i] = ft_calloc(sizeof(char), width + 1);
+		while (j < width)
+		{
+			if (i == 0 || i == height - 1 || j == 0 || j == width - 1)
+				tmp[i][j] = '1';
+			else
+				tmp[i][j] = 32;
+			j++;
+		}
+		i++;
+	}
+	return (tmp);
+}
+
+int	ft_map_close(char **tmp)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (tmp[i])
+	{
+		j = 0;
+		while (tmp[i][j])
+		{
+			if (tmp[i][j] == 32)
+			{
+				if (tmp[i + 1][j] != '1' && tmp[i + 1][j] != 32)
+					return (1);
+				if (tmp[i - 1][j] != '1' && tmp[i - 1][j] != 32)
+					return (1);
+				if (tmp[i][j + 1] != '1' && tmp[i][j + 1] != 32)
+					return (1);
+				if (tmp[i][j - 1] != '1' && tmp[i][j - 1] != 32)
+					return (1);
+			}
+			j++;
+		}
+		i++;
+	}
 	return (0);
 }
 
-int	ft_map(t_main *main, char **s)
+void	ft_map(t_parse *parse)
 {
-	int	x;
-	int	y;
-	int	pos;
+	char	**tmp;
 
-	x = 0;
-	y = 0;
-	pos = 0;
-	while(s[x])
-	{
-		y = 0;
-		while(s[x][y])
-		{
-			if (ft_components(s[x][y], &pos))
-				ft_error_map(main, &pos);
-			y++;
-		}
-		x++;
-	}
-	return (0);
+	tmp = ft_set_tmp(ft_tablen(parse->map) + 4, ft_longer_line(parse->map) + 4);
+	tmp = ft_fill_tmp(tmp, parse->map);
+	if (ft_map_close(tmp))
+		ft_error_map(parse, tmp);
+	ft_free_tab(tmp);
 }

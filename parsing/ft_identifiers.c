@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 02:17:43 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/23 05:27:27 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/25 04:51:12 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,8 @@ void	ft_info(t_parse *parse, char **id, char *line)
 	int		j;
 
 	i = 0;
-	rgb = ft_split(id[1], ',');
-	if (ft_tablen(rgb) != 3)
-	{
-		ft_free_tab(rgb);
-		ft_error_identifiers(parse, id, line);
-	}
-	if (rgb[2][ft_strlen(rgb[2]) - 1] == '\n')
-		rgb[2][ft_strlen(rgb[2]) - 1] = 0;
-	while (rgb[i])
+	rgb = ft_fill_rgb(parse, id, line);
+	while (rgb[++i])
 	{
 		j = 0;
 		while (rgb[i][j])
@@ -93,13 +86,13 @@ void	ft_id(t_parse *parse, char **id, char *line)
 void	ft_check_line(t_parse *parse, char *line)
 {
 	char	**id;
-	
+
+	if (ft_spaces(line) && *line != '\n')
+		ft_error_identifiers(parse, NULL, line);
 	id = ft_split(line, 32);
-	if (ft_tablen(id) != 2 && ft_tablen(id) != 4
-			&& ft_strlen(line) == 1 && *line != '\n')
+	if (ft_tablen(id) != 2 && ft_strlen(line) == 1 && *line != '\n')
 		ft_error_identifiers(parse, id, line);
 	ft_id(parse, id, line);
-
 }
 
 void	ft_identifiers(t_parse *parse, char *file)
@@ -120,6 +113,6 @@ void	ft_identifiers(t_parse *parse, char *file)
 		line = get_next_line(fd);
 	}
 	free(line);
-	ft_check_parse(parse);
+	ft_check_identifiers(parse);
 	close(fd);
 }
