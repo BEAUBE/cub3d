@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 02:52:42 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/25 04:51:40 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/28 02:23:39 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ void	ft_error_map(t_parse *parse, char **tmp)
 	ft_free_parse(parse, 2);
 }
 
-void	ft_error_newline(t_parse *parse, char **new)
+void	ft_error_newline(t_parse *parse, char *s1, char *s2)
 {
-	ft_free_tab(new);
+	free(s1);
+	free(s2);
 	ft_putstr_fd("Error\nNewline in map", 2);
 	ft_free_parse(parse, 2);
 }

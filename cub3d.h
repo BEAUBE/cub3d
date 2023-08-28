@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/08/25 04:50:16 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/28 02:23:12 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 typedef struct s_parse
 {
 	char	**map;
-	int		lim;
+	int		limit;
 	int		components;
 	char	*no;
 	char	*so;
@@ -100,7 +100,7 @@ void    ft_fill_game(t_main *main, t_parse *parse);
 int		ft_tablen(char **tab);
 
 // FREE ERROR
-void	ft_error_newline(t_parse *parse, char **new);
+void	ft_error_newline(t_parse *parse, char *s1, char *s2);
 void	ft_error_pos(t_parse *parse, t_game *game);
 void	ft_error_identifiers(t_parse *parse, char **id, char *line);
 void	ft_error_map(t_parse *parse, char **tmp);

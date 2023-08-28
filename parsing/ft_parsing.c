@@ -6,60 +6,11 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:36:09 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/25 04:43:41 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/28 03:10:42 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-int	ft_limit(char **map)
-{
-	int	i;
-	int	count;
-	int	lim;
-
-	i = 0;
-	count = 0;
-	lim = 0;
-	while (map[i])
-	{
-		if (count == 6)
-			break ;
-		if (*map[i] != '\n')
-		{
-			count++;
-			lim++;
-		}
-		else
-			lim++;
-	}
-	return (lim);
-}
-
-char	*ft_get_map(t_parse *parse)
-{
-	char	**new;
-	int		i;
-	int		lim;
-
-	i = 0;
-	lim = ft_limit(parse->map);
-	new = ft_calloc(sizeof(char *), (ft_tablen(parse->map) - lim) + 1);
-	if (!new)
-		return (NULL);
-	while (parse->map[lim])
-	{
-		new[i] = ft_strdup(parse->map[lim]);
-		if (parse->map[lim][0] == '\n')
-			ft_error_newline(parse, new);
-		ft_printf("%s\n", new[i]);
-		lim++;
-		i++;
-	}
-	ft_free_tab(parse->map);
-	parse->map = new;
-	return (NULL);
-}
 
 int	ft_get_lines(char *file)
 {
@@ -74,22 +25,32 @@ int	ft_get_lines(char *file)
 	return (lines);
 }
 
-t_parse	*ft_get_file(t_parse *parse, char *file)
+t_parse	*ft_get_map(t_parse *parse, char *file)
 {
 	char	*s;
 	char	*tmp;
 	int		i;
 	int		fd;
 
-	i = 0;
 	fd = open(file, O_RDONLY);
-	parse->map = ft_calloc(sizeof(char), ft_get_lines(file) + 1);
+	parse->map = ft_calloc(sizeof(char), (ft_get_lines(file) - parse->limit) + 1);
 	s = ft_calloc(sizeof(char), 1);
 	*s = 0;
+	i = 1;
 	tmp = get_next_line(fd);
 	while (tmp)
 	{
+		if (i < parse->limit)
+		{
+			free(tmp);
+			tmp = get_next_line(fd);
+			i++;
+			continue ;
+		}
+		if (*tmp == '\n')
+			ft_error_newline(parse, tmp, s);
 		s = ft_strjoin(s, tmp);
+		ft_printf("%s", tmp);
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
@@ -97,6 +58,45 @@ t_parse	*ft_get_file(t_parse *parse, char *file)
 	free(s);
 	close(fd);
 	return (parse);
+}
+
+void	ft_pass_newline(char *tmp, int fd, int *i)
+{
+	free(tmp);
+	tmp = get_next_line(fd);
+	while (tmp && *tmp == '\n')
+	{
+		(*i) += 1;
+		free(tmp);
+		tmp = get_next_line(fd);
+	}
+}
+
+void	ft_map_limits(t_parse *parse, char *file)
+{
+	int		fd;
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	fd = open(file, O_RDONLY);
+	tmp = get_next_line(fd);
+	while (tmp)
+	{
+		if (*tmp != '\n')
+			parse->limit++;
+		i++;
+		if (parse->limit == 6)
+		{
+			ft_pass_newline(tmp, fd, &i);
+			break ;
+		}
+		free(tmp);
+		tmp = get_next_line(fd);
+	}
+	parse->limit = i - 1;
+	free(tmp);
+	close(fd);
 }
 
 void	ft_filename(char *file, int ac)
@@ -130,8 +130,8 @@ t_main	*ft_parsing(t_main *main, char *file, int ac)
 	else
 	{
 		ft_identifiers(main->parse, file);
-		// ft_get_file(main->parse, file);
-		ft_get_map(main->parse);
+		ft_map_limits(main->parse, file);
+		ft_get_map(main->parse, file);
 		ft_map(main->parse);
 		ft_fill_game(main, main->parse);
 	}
