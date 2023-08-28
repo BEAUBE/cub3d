@@ -6,7 +6,7 @@
 #    By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 16:27:12 by slepetit          #+#    #+#              #
-#    Updated: 2023/08/25 03:40:38 by slepetit         ###   ########.fr        #
+#    Updated: 2023/08/28 03:35:52 by slepetit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = main.c \
 	parsing/ft_identifiers_utils.c \
 	parsing/ft_map.c \
 	parsing/ft_map_utils.c \
+	parsing/ft_get_map.c \
 	parsing/ft_error.c \
 	parsing/ft_fill_game.c
 

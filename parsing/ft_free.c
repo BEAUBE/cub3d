@@ -6,11 +6,22 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 02:21:47 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/25 04:44:02 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/28 03:50:59 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	ft_free_game(t_game *game)
+{
+	free(game->textures->no);
+	free(game->textures->so);
+	free(game->textures->ea);
+	free(game->textures->we);
+	free(game->textures);
+	ft_free_tab(game->map);
+	free(game);
+}
 
 void	ft_free_parse(t_parse *parse, int ex)
 {

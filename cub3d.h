@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/08/28 02:23:12 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/28 03:51:19 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_parse
 {
 	char	**map;
 	int		limit;
-	int		components;
+	int		compo;
 	char	*no;
 	char	*so;
 	char	*we;
@@ -66,8 +66,6 @@ typedef struct s_main
 }	t_main;
 
 // PARSE
-int		ft_get_lines(char *file);
-t_parse	*ft_get_file(t_parse *parse, char *file);
 void	ft_filename(char *file, int ac);
 t_main	*ft_parsing(t_main *main, char *file, int ac);
 
@@ -84,7 +82,13 @@ void	ft_check_line(t_parse *parse, char *line);
 void	ft_identifiers(t_parse *parse, char *file);
 
 // MAP
+void	ft_map_limits(t_parse *parse, char *file);
+void	ft_pass_newline(char *tmp, int fd, int *i);
+t_parse	*ft_get_map(t_parse *parse, char *file);
+int		ft_get_lines(char *file);
 int		ft_longer_line(char **map);
+void	ft_check_components(t_parse *parse, char c);
+void	ft_map_components(t_parse *parse, char **map);
 char	**ft_fill_tmp(char **tmp, char **map);
 char	**ft_set_tmp(int height, int width);
 int		ft_map_close(char **tmp);
@@ -104,6 +108,7 @@ void	ft_error_newline(t_parse *parse, char *s1, char *s2);
 void	ft_error_pos(t_parse *parse, t_game *game);
 void	ft_error_identifiers(t_parse *parse, char **id, char *line);
 void	ft_error_map(t_parse *parse, char **tmp);
+void	ft_free_game(t_game *game);
 void	ft_free_parse(t_parse *parse, int ex);
 void	ft_free_tab(char **tab);
 

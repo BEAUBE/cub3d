@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 02:52:42 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/28 02:23:39 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/28 03:47:13 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	ft_error_pos(t_parse *parse, t_game *game)
 {
-	ft_free_tab(game->map);
 	free(game);
-	ft_putstr_fd("Error\nWrong position", 2);
+	ft_putstr_fd("Error\nNeed a position (N,S,W,E)", 2);
 	ft_free_parse(parse, 2);
 }
 

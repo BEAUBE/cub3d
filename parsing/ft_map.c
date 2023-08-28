@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:08:51 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/25 04:52:51 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/28 03:45:47 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,25 @@ int	ft_map_close(char **tmp)
 	return (0);
 }
 
+void	ft_map_components(t_parse *parse, char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			ft_check_components(parse, map[i][j]);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	ft_map(t_parse *parse)
 {
 	char	**tmp;
@@ -96,4 +115,5 @@ void	ft_map(t_parse *parse)
 	if (ft_map_close(tmp))
 		ft_error_map(parse, tmp);
 	ft_free_tab(tmp);
+	ft_map_components(parse, parse->map);
 }
