@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 03:13:19 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/28 03:13:57 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/28 20:18:45 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,15 @@ t_parse	*ft_get_map(t_parse *parse, char *file)
 	int		fd;
 
 	fd = open(file, O_RDONLY);
-	parse->map = ft_calloc(sizeof(char), (ft_get_lines(file) - parse->limit) + 1);
+	parse->map = ft_calloc(sizeof(char),
+			(ft_get_lines(file) - parse->limit) + 1);
 	s = ft_calloc(sizeof(char), 1);
 	*s = 0;
 	i = 1;
 	tmp = get_next_line(fd);
 	while (tmp)
 	{
-		if (i < parse->limit)
+		if (i <= parse->limit)
 		{
 			free(tmp);
 			tmp = get_next_line(fd);
@@ -60,17 +61,17 @@ t_parse	*ft_get_map(t_parse *parse, char *file)
 	return (parse);
 }
 
-void	ft_pass_newline(char *tmp, int fd, int *i)
-{
-	free(tmp);
-	tmp = get_next_line(fd);
-	while (tmp && *tmp == '\n')
-	{
-		(*i) += 1;
-		free(tmp);
-		tmp = get_next_line(fd);
-	}
-}
+// void	ft_pass_newline(char *tmp, int fd, int *i)
+// {
+// 	free(tmp);
+// 	tmp = get_next_line(fd);
+// 	while (tmp && *tmp == '\n')
+// 	{
+// 		(*i) += 1;
+// 		free(tmp);
+// 		tmp = get_next_line(fd);
+// 	}
+// }
 
 void	ft_map_limits(t_parse *parse, char *file)
 {
@@ -78,9 +79,9 @@ void	ft_map_limits(t_parse *parse, char *file)
 	int		i;
 	char	*tmp;
 
-	i = 0;
 	fd = open(file, O_RDONLY);
 	tmp = get_next_line(fd);
+	i = 0;
 	while (tmp)
 	{
 		if (*tmp != '\n')
@@ -88,7 +89,15 @@ void	ft_map_limits(t_parse *parse, char *file)
 		i++;
 		if (parse->limit == 6)
 		{
-			ft_pass_newline(tmp, fd, &i);
+			free(tmp);
+			tmp = get_next_line(fd);
+			while (tmp && *tmp == '\n')
+			{
+				i++;
+				free(tmp);
+				tmp = get_next_line(fd);
+			}
+			// ft_pass_newline(tmp, fd, &i);
 			break ;
 		}
 		free(tmp);
