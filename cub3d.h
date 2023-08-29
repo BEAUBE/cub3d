@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/08/28 03:51:19 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/29 06:16:08 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define SO 2
 # define EA 3
 # define WE 4
+// peut etre des degres?
 
 typedef struct s_parse
 {
@@ -48,7 +49,7 @@ typedef struct s_textures
 	int			c[3];
 }	t_textures;
 
-typedef struct	s_game // si ca va pour Bob
+typedef struct	s_game
 {
 	char		**map;
 	int			px;
@@ -61,11 +62,12 @@ typedef struct	s_game // si ca va pour Bob
 
 typedef struct s_main
 {
-	t_game		*game; // pas rempli encore
+	t_game		*game;
 	t_parse		*parse;
 }	t_main;
 
 // PARSE
+void	ft_file(char *file);
 void	ft_filename(char *file, int ac);
 t_main	*ft_parsing(t_main *main, char *file, int ac);
 
@@ -83,7 +85,6 @@ void	ft_identifiers(t_parse *parse, char *file);
 
 // MAP
 void	ft_map_limits(t_parse *parse, char *file);
-void	ft_pass_newline(char *tmp, int fd, int *i);
 t_parse	*ft_get_map(t_parse *parse, char *file);
 int		ft_get_lines(char *file);
 int		ft_longer_line(char **map);

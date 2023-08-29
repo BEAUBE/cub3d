@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 13:54:56 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/16 01:58:25 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/29 05:49:06 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
-# define BUFFER_SIZE 5
+# define BUFFER_SIZE 1
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

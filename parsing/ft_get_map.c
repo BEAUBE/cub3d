@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 03:13:19 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/28 20:18:45 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/29 06:14:57 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ t_parse	*ft_get_map(t_parse *parse, char *file)
 	int		fd;
 
 	fd = open(file, O_RDONLY);
-	parse->map = ft_calloc(sizeof(char),
-			(ft_get_lines(file) - parse->limit) + 1);
 	s = ft_calloc(sizeof(char), 1);
 	*s = 0;
 	i = 1;
@@ -51,7 +49,6 @@ t_parse	*ft_get_map(t_parse *parse, char *file)
 		if (*tmp == '\n')
 			ft_error_newline(parse, tmp, s);
 		s = ft_strjoin(s, tmp);
-		ft_printf("%s", tmp);
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
@@ -60,18 +57,6 @@ t_parse	*ft_get_map(t_parse *parse, char *file)
 	close(fd);
 	return (parse);
 }
-
-// void	ft_pass_newline(char *tmp, int fd, int *i)
-// {
-// 	free(tmp);
-// 	tmp = get_next_line(fd);
-// 	while (tmp && *tmp == '\n')
-// 	{
-// 		(*i) += 1;
-// 		free(tmp);
-// 		tmp = get_next_line(fd);
-// 	}
-// }
 
 void	ft_map_limits(t_parse *parse, char *file)
 {
@@ -87,7 +72,7 @@ void	ft_map_limits(t_parse *parse, char *file)
 		if (*tmp != '\n')
 			parse->limit++;
 		i++;
-		if (parse->limit == 6)
+		if (parse->limit == 7)
 		{
 			free(tmp);
 			tmp = get_next_line(fd);
@@ -97,7 +82,6 @@ void	ft_map_limits(t_parse *parse, char *file)
 				free(tmp);
 				tmp = get_next_line(fd);
 			}
-			// ft_pass_newline(tmp, fd, &i);
 			break ;
 		}
 		free(tmp);

@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 02:21:47 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/28 20:15:42 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/08/29 05:58:04 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,33 @@
 
 void	ft_free_game(t_game *game)
 {
-	free(game->textures->no);
-	free(game->textures->so);
-	free(game->textures->ea);
-	free(game->textures->we);
-	free(game->textures);
-	ft_free_tab(game->map);
+	if (game->textures->no)
+		free(game->textures->no);
+	if (game->textures->so)
+		free(game->textures->so);
+	if (game->textures->ea)
+		free(game->textures->ea);
+	if (game->textures->we)
+		free(game->textures->we);
+	if (game->textures)
+		free(game->textures);
+	if (game->map)
+		ft_free_tab(game->map);
 	free(game);
 }
 
 void	ft_free_parse(t_parse *parse, int ex)
 {
-	free(parse->no);
-	free(parse->so);
-	free(parse->we);
-	free(parse->ea);
-	ft_free_tab(parse->map);
+	if (parse->no)
+		free(parse->no);
+	if (parse->so)
+		free(parse->so);
+	if (parse->we)
+		free(parse->we);
+	if (parse->ea)
+		free(parse->ea);
+	if (parse->map)
+		ft_free_tab(parse->map);
 	free(parse);
 	if (ex)
 		exit(2);
