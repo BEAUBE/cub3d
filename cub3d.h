@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/08/29 06:16:08 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/02 15:36:41 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ typedef struct s_textures
 typedef struct	s_game
 {
 	char		**map;
-	int			px;
-	int			py;
-	int			orientation;
-	mlx_t		*mlxptr;
-	mlx_image_t	*mlximg;
+	float		px;
+	float		py;
+	char		orientation;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
 	t_textures	*textures;
 }	t_game;
 
@@ -112,6 +112,9 @@ void	ft_error_map(t_parse *parse, char **tmp);
 void	ft_free_game(t_game *game);
 void	ft_free_parse(t_parse *parse, int ex);
 void	ft_free_tab(char **tab);
+
+// GAME
+int		ft_game(t_main *main);
 
 
 
