@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/02 15:36:41 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/04 01:03:50 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_textures
 	int			c[3];
 }	t_textures;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	char		**map;
 	float		px;
@@ -99,7 +99,7 @@ void	ft_map(t_parse *parse);
 char	**ft_cpy_map(char **s, t_game *game);
 void	ft_orientation(t_game *game, char c);
 int		ft_find_pos(char **map, t_game *game);
-void    ft_fill_game(t_main *main, t_parse *parse);
+void	ft_fill_game(t_main *main, t_parse *parse);
 
 // UTILS
 int		ft_tablen(char **tab);
@@ -115,10 +115,5 @@ void	ft_free_tab(char **tab);
 
 // GAME
 int		ft_game(t_main *main);
-
-
-
-
-
 
 #endif

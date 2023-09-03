@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 03:13:19 by slepetit          #+#    #+#             */
-/*   Updated: 2023/09/03 19:16:52 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/04 01:02:07 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,21 @@ int	ft_get_lines(char *file)
 }
 
 /*
+	Atteindre le debut de la map
+*/
+
+char	*ft_start_map(int fd, char *tmp, int *i, int limit)
+{
+	while (*i <= limit)
+	{
+		free(tmp);
+		tmp = get_next_line(fd);
+		*i += 1;
+	}
+	return (tmp);
+}
+
+/*
 	parse->limit correspond au debut de la map (ex ligne 10)
 	si dans la map (apres limit) \n error
 */
@@ -43,18 +58,13 @@ t_parse	*ft_get_map(t_parse *parse, char *file)
 
 	fd = open(file, O_RDONLY);
 	s = ft_calloc(sizeof(char), 1);
-	*s = 0;
+	if (!s)
+		return (NULL);
 	i = 1;
 	tmp = get_next_line(fd);
 	while (tmp)
 	{
-		if (i <= parse->limit)
-		{
-			free(tmp);
-			tmp = get_next_line(fd);
-			i++;
-			continue ;
-		}
+		tmp = ft_start_map(fd, tmp, &i, parse->limit);
 		if (*tmp == '\n')
 			ft_error_newline(parse, tmp, s);
 		s = ft_strjoin(s, tmp);
@@ -65,6 +75,23 @@ t_parse	*ft_get_map(t_parse *parse, char *file)
 	free(s);
 	close(fd);
 	return (parse);
+}
+
+/*
+	Passe les \n avant le debut de la map
+*/
+
+void	ft_pass_newline(int fd, char *tmp, int *i)
+{
+	free(tmp);
+	tmp = get_next_line(fd);
+	while (tmp && *tmp == '\n')
+	{
+		*i += 1;
+		free(tmp);
+		tmp = get_next_line(fd);
+	}
+	free(tmp);
 }
 
 /*
@@ -92,20 +119,12 @@ void	ft_map_limits(t_parse *parse, char *file)
 		i++;
 		if (parse->limit == 7)
 		{
-			free(tmp);
-			tmp = get_next_line(fd);
-			while (tmp && *tmp == '\n')
-			{
-				i++;
-				free(tmp);
-				tmp = get_next_line(fd);
-			}
+			ft_pass_newline(fd, tmp, &i);
 			break ;
 		}
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
 	parse->limit = i - 1;
-	free(tmp);
 	close(fd);
 }

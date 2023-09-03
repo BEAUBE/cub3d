@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:08:51 by slepetit          #+#    #+#             */
-/*   Updated: 2023/09/03 23:34:57 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/04 00:20:06 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ char	**ft_set_tmp(int height, int width)
 }
 
 /*
-	Regarde maintenant si chaque espace est entoure soit d'un espace soit d'un 1
-	Si ce n'est pas le cas, c'est que la map n'est pas ferme et\ou mauvais composants
+	Regarde maintenant si chaque espace est entoure d'un espace ou d'un 1
+	Si non, c'est que la map n'est pas ferme et\ou mauvais composants
 */
 
 int	ft_map_close(char **tmp)
