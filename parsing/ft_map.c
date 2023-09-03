@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:08:51 by slepetit          #+#    #+#             */
-/*   Updated: 2023/09/03 19:31:47 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/03 23:34:57 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,9 +142,9 @@ void	ft_map(t_parse *parse)
 {
 	char	**tmp;
 
+	ft_map_components(parse, parse->map);
 	tmp = ft_set_tmp(ft_tablen(parse->map) + 4, ft_longer_line(parse->map) + 4);
 	tmp = ft_fill_tmp(tmp, parse->map);
-	ft_map_components(parse, parse->map);
 	if (ft_map_close(tmp))
 		ft_error_map(parse, tmp);
 	ft_free_tab(tmp);

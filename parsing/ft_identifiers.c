@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 02:17:43 by slepetit          #+#    #+#             */
-/*   Updated: 2023/09/03 19:08:16 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/03 23:25:08 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_rgb(t_parse *parse, char **id, char **rgb, char *line)
 		parse->c[1] = ft_atoi(rgb[1]);
 		parse->c[2] = ft_atoi(rgb[2]);
 	}
+	ft_free_tab(rgb);
 }
 
 /*
@@ -111,6 +112,7 @@ void	ft_check_line(t_parse *parse, char *line)
 	if (ft_tablen(id) != 2 && ft_strlen(line) == 1 && *line != '\n')
 		ft_error_identifiers(parse, id, line);
 	ft_id(parse, id, line);
+	ft_free_tab(id);
 }
 
 /*

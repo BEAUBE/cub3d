@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 19:46:51 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/10 02:08:48 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/03 23:19:37 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**ft_split(char *s, char c)
 	j = 0;
 	if (!s)
 		return (NULL);
-	tab = malloc(sizeof(char *) * (ft_line(s, c) + 1));
+	tab = ft_calloc(sizeof(char *), ft_line(s, c) + 1);
 	if (!tab)
 		return (NULL);
 	while (*s && *s == c)

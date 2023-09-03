@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:36:09 by slepetit          #+#    #+#             */
-/*   Updated: 2023/09/03 18:53:51 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/03 23:13:38 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 
 void	ft_file(char *file)
 {
-	int	fd;
+	char	*tmp;
+	int		fd;
 
 	if (open(file, F_OK, X_OK) < 0)
 	{
@@ -27,12 +28,15 @@ void	ft_file(char *file)
 		exit(2);
 	}
 	fd = open(file, O_RDONLY);
-	if (get_next_line(fd) == NULL)
+	tmp = get_next_line(fd);
+	if (tmp == NULL)
 	{
+		free(tmp);
 		ft_putstr_fd("Error\nEmpty file\n", 2);
 		close(fd);
 		exit(2);
 	}
+	free(tmp);
 	close(fd);
 }
 
@@ -72,6 +76,7 @@ t_main	*ft_parsing(t_main *main, char *file, int ac)
 		ft_get_map(main->parse, file);
 		ft_map(main->parse);
 		ft_fill_game(main, main->parse);
+		ft_free_game(main->game);
 	}
 	return (main);
 }
