@@ -6,11 +6,16 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 04:21:42 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/25 04:50:51 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/03 19:08:12 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+/*
+	Verifie si la ligne ne contient que des espaces
+	si oui erreur
+*/
 
 int	ft_spaces(char *line)
 {
@@ -26,6 +31,12 @@ int	ft_spaces(char *line)
 	return (1);
 }
 
+/*
+	rgb fonctionne pareil qu'ID
+	Regarde le nombre d'argumets (0,0,0) qui est toujours egal a 3
+	Enleve egalement le \n
+*/
+
 char	**ft_fill_rgb(t_parse *parse, char **id, char *line)
 {
 	char	**rgb;
@@ -40,6 +51,12 @@ char	**ft_fill_rgb(t_parse *parse, char **id, char *line)
 		rgb[2][ft_strlen(rgb[2]) - 1] = 0;
 	return (rgb);
 }
+
+/*
+	Une fois le fichier lu, grand check
+	Regarde si les fichiers textures existent et peuvent etre lus
+	Verifie ensuite si les couleurs se trouvent bien [0,255]
+*/
 
 void	ft_check_identifiers(t_parse *parse)
 {
@@ -66,6 +83,13 @@ void	ft_check_identifiers(t_parse *parse)
 	}
 }
 
+/*
+	Verifie d'abord si tout est bien rempli
+	Si non, on continue de lire le fichier
+	Si oui
+	Remplace les \n par des \0
+*/
+
 int	ft_all_identifiers(t_parse *parse)
 {
 	if (!parse->no || !parse->so || !parse->we || !parse->ea
@@ -81,6 +105,10 @@ int	ft_all_identifiers(t_parse *parse)
 		parse->ea[ft_strlen(parse->ea) - 1] = 0;
 	return (1);
 }
+
+/*
+	Regarde simplement si SO,NO,EA,WE existe deja ou non
+*/
 
 int	ft_is_fill(t_parse *parse, char *s, char **id, char *line)
 {

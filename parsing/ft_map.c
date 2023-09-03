@@ -6,11 +6,16 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:08:51 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/29 06:10:37 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/03 19:31:47 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+/*
+	Rajoute a la map temporaire, la map initiale
+	A l'interieur des lignes de 1 et d'espaces d'ou le +2
+*/
 
 char	**ft_fill_tmp(char **tmp, char **map)
 {
@@ -30,6 +35,10 @@ char	**ft_fill_tmp(char **tmp, char **map)
 	}
 	return (tmp);
 }
+
+/*
+	Creer une map temporaire et l'entoure de 1 et d'espace a linterieur
+*/
 
 char	**ft_set_tmp(int height, int width)
 {
@@ -57,6 +66,11 @@ char	**ft_set_tmp(int height, int width)
 	}
 	return (tmp);
 }
+
+/*
+	Regarde maintenant si chaque espace est entoure soit d'un espace soit d'un 1
+	Si ce n'est pas le cas, c'est que la map n'est pas ferme et\ou mauvais composants
+*/
 
 int	ft_map_close(char **tmp)
 {
@@ -87,6 +101,10 @@ int	ft_map_close(char **tmp)
 	return (0);
 }
 
+/*
+	Regarde si les composants sont bons
+*/
+
 void	ft_map_components(t_parse *parse, char **map)
 {
 	int	i;
@@ -105,6 +123,20 @@ void	ft_map_components(t_parse *parse, char **map)
 		i++;
 	}
 }
+
+/*
+	ft_tablen(tab) + 4 PORQUE ??
+	Pour entourer une map de 1 et d'espaces
+	EXEMPLE (map mauvaise)
+	11111111
+	1      1
+	1 1111 1
+	1 10N1 1
+	1 1001 1
+	1 1101 1
+	1      1
+	11111111
+*/
 
 void	ft_map(t_parse *parse)
 {

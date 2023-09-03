@@ -6,11 +6,16 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:36:09 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/29 06:18:02 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/03 18:53:51 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+/*
+	Verifie si le fichier existe ou si les droits sont ok
+	Verifie que le fichier n'est pas vide
+*/
 
 void	ft_file(char *file)
 {
@@ -30,6 +35,11 @@ void	ft_file(char *file)
 	}
 	close(fd);
 }
+
+/*
+	Verifie si il y a un fichier
+	Verifie si l'extension est bonne (.cub seul fonctionne)
+*/
 
 void	ft_filename(char *file, int ac)
 {

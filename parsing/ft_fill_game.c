@@ -6,11 +6,15 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 05:32:32 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/28 03:51:30 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/03 19:30:29 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+/*
+	un strdup de la map
+*/
 
 char	**ft_cpy_map(char **s, t_game *game)
 {
@@ -28,6 +32,10 @@ char	**ft_cpy_map(char **s, t_game *game)
 	return (game->map);
 }
 
+/*
+	Rempli l'orientation, tu peux changer en degres
+*/
+
 void	ft_orientation(t_game *game, char c)
 {
 	if (c == 'N')
@@ -39,6 +47,10 @@ void	ft_orientation(t_game *game, char c)
 	if (c == 'E')
 		game->orientation = 4;
 }
+
+/*
+	Trouve la position du joueur
+*/
 
 int	ft_find_pos(char **map, t_game *game)
 {
@@ -68,6 +80,10 @@ int	ft_find_pos(char **map, t_game *game)
 		return (0);
 	return (1);
 }
+
+/*
+	Rempli les infos de la strut parse dans la struct game
+*/
 
 void	ft_fill_game(t_main *main, t_parse *parse)
 {
