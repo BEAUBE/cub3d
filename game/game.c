@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/04 17:03:54 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/04 18:32:57 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ void	ft_draw(void *param)
 	t_main *main;
 
 	main = param;
-	get_spawn_infos(main, main->game->map);
 	draw_f_c(main, main->game->textures->f, main->game->textures->c);
 }
 
 int	ft_game(t_main *main)
 {
+	get_spawn_infos(main, main->parse->map);
 	if (!(main->game->mlx = mlx_init(1000, 1000, "MLX42", true)))
 	{
 		puts(mlx_strerror(mlx_errno));
