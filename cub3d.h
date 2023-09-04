@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/04 01:03:50 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/04 13:34:27 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,8 @@ void	ft_free_tab(char **tab);
 
 // GAME
 int		ft_game(t_main *main);
+
+// MLX
+int		ft_pixel(int r, int g, int b, int a);
 
 #endif

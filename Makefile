@@ -6,7 +6,7 @@
 #    By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 16:27:12 by slepetit          #+#    #+#              #
-#    Updated: 2023/09/02 13:15:48 by ajoliet          ###   ########.fr        #
+#    Updated: 2023/09/04 13:38:48 by ajoliet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC = main.c \
 	parsing/ft_get_map.c \
 	parsing/ft_error.c \
 	parsing/ft_fill_game.c \
-	game/game.c
+	game/game.c \
+	game/mlx_utils.c
 
 LIBDIR = lib
 LIBLIB = lib/libft.a

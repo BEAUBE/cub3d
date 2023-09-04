@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/26 14:03:20 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/04 13:32:10 by ajoliet          ###   ########.fr       */
+/*   Created: 2023/09/04 13:32:55 by ajoliet           #+#    #+#             */
+/*   Updated: 2023/09/04 13:33:46 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-int main(int ac, char **av)
+int ft_pixel(int r, int g, int b, int a)
 {
-	t_main	main;
-
-	ft_parsing(&main, av[1], ac);
-	ft_game(&main);
+    return (r << 24 | g << 16 | b << 8 | a);
 }
