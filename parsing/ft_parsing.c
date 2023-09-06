@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:36:09 by slepetit          #+#    #+#             */
-/*   Updated: 2023/09/03 23:13:38 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:08:34 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ t_main	*ft_parsing(t_main *main, char *file, int ac)
 		ft_get_map(main->parse, file);
 		ft_map(main->parse);
 		ft_fill_game(main, main->parse);
-		ft_free_game(main->game);
 	}
 	return (main);
 }

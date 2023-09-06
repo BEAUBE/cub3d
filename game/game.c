@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/04 18:32:57 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/06 17:43:44 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	draw_f_c(t_main *main, int f[3], int c[3])
 void	ft_draw(void *param)
 {
 	t_main *main;
-
 	main = param;
 	draw_f_c(main, main->game->textures->f, main->game->textures->c);
 }

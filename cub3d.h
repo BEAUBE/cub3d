@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/04 13:34:27 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/06 15:05:32 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ typedef struct s_textures
 	int			f[3];
 	int			c[3];
 }	t_textures;
+
+typedef struct s_ray
+{
+	float	raydir_x;
+	float	raydir_y;
+}	t_ray;
 
 typedef struct s_game
 {
