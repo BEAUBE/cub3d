@@ -3,37 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/06 17:43:44 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/06 19:16:14 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void	get_spawn_infos(t_main *main, char **map)
-{
-	int x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (map[x])
-	{
-		while (map[x][y])
-		{
-			if (map[x][y] == 'N' || map[x][y] == 'W' || map[x][y] == 'S' || map[x][y] == 'E')
-			{
-				main->game->orientation = map[x][y];
-				main->game->px = (float)x + 0.5;
-				main->game->py = (float)y + 0.5;
-				printf("%f, %f\n", main->game->px, main->game->py);
-			}
-			y++;
-		}
-	}
-}
 
 int	draw_f_c(t_main *main, int f[3], int c[3])
 {
@@ -80,7 +57,6 @@ void	ft_draw(void *param)
 
 int	ft_game(t_main *main)
 {
-	get_spawn_infos(main, main->parse->map);
 	if (!(main->game->mlx = mlx_init(1000, 1000, "MLX42", true)))
 	{
 		puts(mlx_strerror(mlx_errno));
