@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/06 15:05:32 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/06 19:14:52 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # define SO 2
 # define EA 3
 # define WE 4
-// peut etre des degres?
 
 typedef struct s_parse
 {
@@ -60,7 +59,7 @@ typedef struct s_game
 	char		**map;
 	float		px;
 	float		py;
-	char		orientation;
+	int		orientation;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	t_textures	*textures;
