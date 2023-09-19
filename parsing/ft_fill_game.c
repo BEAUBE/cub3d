@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 05:32:32 by slepetit          #+#    #+#             */
-/*   Updated: 2023/09/06 19:14:34 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:54:25 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	ft_find_pos(char **map, t_game *game)
 			{
 				if (game->orientation)
 					return (0);
-				game->px = j + 0.5;
-				game->py = i + 0.5;
+				game->player.posx = j + 0.5;
+				game->player.posy = i + 0.5;
 				ft_orientation(game, map[i][j]);
 			}
 			j++;

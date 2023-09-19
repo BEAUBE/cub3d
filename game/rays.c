@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/26 14:03:20 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/14 17:32:34 by ajoliet          ###   ########.fr       */
+/*   Created: 2023/09/14 17:49:19 by ajoliet           #+#    #+#             */
+/*   Updated: 2023/09/14 18:49:55 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-int main(int ac, char **av)
+void	get_rays(t_main *main)
 {
-	t_main	main;
+	(void)main;
+	t_ray	*rays;
 
-	ft_parsing(&main, av[1], ac);
-	ft_game(&main);
-//	ft_free_game(main.game);
-//	ft_free_parse(main.parse, 0);
+	rays = malloc(sizeof(t_ray) * W_SIZE_X);
 }

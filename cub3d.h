@@ -6,13 +6,14 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/06 19:14:52 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:44:32 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 # include "lib/libft.h"
+# include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -22,6 +23,9 @@
 # define SO 2
 # define EA 3
 # define WE 4
+
+# define W_SIZE_X 1000
+# define W_SIZE_Y 800
 
 typedef struct s_parse
 {
@@ -52,13 +56,35 @@ typedef struct s_ray
 {
 	float	raydir_x;
 	float	raydir_y;
+	float	sideDistx;
+	float	sideDisty;
+	float	deltaDistx;
+	float	deltaDisty;
+	float	perpWallDist;
+	float	posx;
+	float	posy;
+	int		stepx;
+	int		stepy;
+	int		side;
+	int		final_dist;
+	int		final_height;
 }	t_ray;
+
+typedef struct	s_player
+{
+	float	posx;
+	float	posy;
+	float	dirx;
+	float	diry;
+	float	planex;
+	float	planey;
+	t_ray	*rays;
+}				t_player;
 
 typedef struct s_game
 {
 	char		**map;
-	float		px;
-	float		py;
+	t_player	player;
 	int		orientation;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
@@ -120,6 +146,8 @@ void	ft_free_tab(char **tab);
 
 // GAME
 int		ft_game(t_main *main);
+
+void	get_rays(t_main *main);
 
 // MLX
 int		ft_pixel(int r, int g, int b, int a);
