@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/19 18:00:00 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/19 18:24:41 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ int	ft_game(t_main *main)
 	main->game->player.posy = 11.5;
 	main->game->player.dirx = 0.0;
 	main->game->player.diry = -1.0;
+	main->game->player.rays = malloc(sizeof(t_ray) * W_SIZE_X);
 	mlx_loop_hook(main->game->mlx, ft_draw, main);
 	mlx_loop(main->game->mlx);
 	mlx_terminate(main->game->mlx);
