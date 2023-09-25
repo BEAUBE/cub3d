@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/19 17:44:32 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/21 14:47:01 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_textures
 
 typedef struct s_ray
 {
+	float	cam_var;
 	float	raydir_x;
 	float	raydir_y;
 	float	sideDistx;
@@ -61,13 +62,15 @@ typedef struct s_ray
 	float	deltaDistx;
 	float	deltaDisty;
 	float	perpWallDist;
-	float	posx;
-	float	posy;
+	int		wall_size;
+	int		posx;
+	int		posy;
 	int		stepx;
 	int		stepy;
 	int		side;
 	int		final_dist;
 	int		final_height;
+	int		hit;
 }	t_ray;
 
 typedef struct	s_player

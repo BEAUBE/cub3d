@@ -6,11 +6,11 @@
 #    By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 16:27:12 by slepetit          #+#    #+#              #
-#    Updated: 2023/09/14 18:40:16 by ajoliet          ###   ########.fr        #
+#    Updated: 2023/09/25 17:34:54 by ajoliet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 
 SRC = main.c \
 	parsing/ft_parsing.c \
