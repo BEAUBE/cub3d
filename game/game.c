@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/25 19:53:46 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/26 14:34:36 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,22 +105,22 @@ void	get_collision(t_main *main, t_ray *ray)
 	if (ray->raydir_x < 0)
 	{
 		ray->stepx = -1;
-		ray->sideDistx = (main->game->player.posx - ray->posx) * ray->deltaDistx;
+		ray->sideDistx = (main->game->player.posx - (float)ray->posx) * ray->deltaDistx;
 	}
 	else
 	{
 		ray->stepx = 1;
-		ray->sideDistx = (ray->posx + 1.0 - main->game->player.posx) * ray->deltaDistx;
+		ray->sideDistx = ((float)ray->posx + 1.0 - main->game->player.posx) * ray->deltaDistx;
 	}
 	if (ray->raydir_y < 0)
 	{
 	  ray->stepy = -1;
-	  ray->sideDisty = (main->game->player.posy - ray->posy) * ray->deltaDisty;
+	  ray->sideDisty = (main->game->player.posy - (float)ray->posy) * ray->deltaDisty;
 	}
 	else
 	{
 	  ray->stepy = 1;
-	  ray->sideDisty = (ray->posy + 1.0 - ray->posy) * ray->deltaDisty;
+	  ray->sideDisty = (ray->posy + 1.0 - main->game->player.posy) * ray->deltaDisty;
 	}
 	//printf("%f : x = %f, y = %f\n", ray->cam_var, ray->raydir_x, ray->raydir_y);
 	while (!ray->hit)
