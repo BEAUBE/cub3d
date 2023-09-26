@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/21 14:47:01 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/26 18:21:47 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_ray
 	int		stepx;
 	int		stepy;
 	int		side;
+	int		final_face;
 	int		final_dist;
 	int		final_height;
 	int		hit;
@@ -151,6 +152,12 @@ void	ft_free_tab(char **tab);
 int		ft_game(t_main *main);
 
 void	get_rays(t_main *main);
+t_ray	*init_ray(t_main *main, int x, t_ray *ray);
+void	get_collision(t_main *main, t_ray *ray);
+void	get_dist(t_main *main, t_ray *ray);
+void	get_wall_size(t_main *main, int x);
+
+void	ft_keys(void *param);
 
 // MLX
 int		ft_pixel(int r, int g, int b, int a);

@@ -6,7 +6,7 @@
 #    By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 16:27:12 by slepetit          #+#    #+#              #
-#    Updated: 2023/09/25 17:34:54 by ajoliet          ###   ########.fr        #
+#    Updated: 2023/09/26 18:04:02 by ajoliet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ SRC = main.c \
 	parsing/ft_fill_game.c \
 	game/game.c \
 	game/rays.c \
+	game/rays_utils.c \
+	game/keys.c \
 	game/mlx_utils.c
 
 LIBDIR = lib
