@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/26 18:21:47 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/27 15:47:25 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,13 @@ typedef struct s_parse
 typedef struct s_textures
 {
 	char		*no;
+	mlx_texture_t	*t_no;
 	char		*so;
+	mlx_texture_t	*t_so;
 	char		*we;
+	mlx_texture_t	*t_we;
 	char		*ea;
+	mlx_texture_t	*t_ea;
 	int			f[3];
 	int			c[3];
 }	t_textures;
@@ -71,6 +75,7 @@ typedef struct s_ray
 	int		final_face;
 	int		final_dist;
 	int		final_height;
+	float	texture_pos;
 	int		hit;
 }	t_ray;
 
@@ -157,7 +162,13 @@ void	get_collision(t_main *main, t_ray *ray);
 void	get_dist(t_main *main, t_ray *ray);
 void	get_wall_size(t_main *main, int x);
 
+//draw.c
+void	ft_draw(void *param);
+
 void	ft_keys(void *param);
+
+//texture.c
+int	get_texture_color(t_main *main, int y, int x, int wall_size);
 
 // MLX
 int		ft_pixel(int r, int g, int b, int a);

@@ -6,81 +6,24 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/26 18:21:51 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/29 19:22:43 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void	draw_floor(t_main *main, int x, int end)
+/*
+void	get_texture(t_main *main, char *path)
 {
-	int i;
-	int	fc;
+	mlx_texture_t	*mlx_texture_tmp;
+	mlx_image_t		*mlx_image_tmp;
 
-	i = W_SIZE_Y - 1;
-	fc = ft_pixel(250, 0, 250, 255);
-	while (i > end)
-	{
-		mlx_put_pixel(main->game->img, x, i, fc);
-		i--;
-	}
+	mlx_texture_tmp = mlx_load_png(path);
+	mlx_image_tmp = mlx_texture_to_image(main->game->mlx, mlx_texture_tmp);
+	texture = get_texture_from_mlx(mlx_image_tmp);
+	lx_delete_texture(mlx_texture_tmp);
+	mlx_delete_image(main->game->mlx, mlx_image_tmp);
 }
-
-void	draw_ceiling(t_main *main, int x, int end)
-{
-	int i;
-	int	cc;
-
-	i = 0;
-	cc = ft_pixel(250, 250, 0, 255);
-	while (i < end)
-	{
-		mlx_put_pixel(main->game->img, x, i, cc);
-		i++;
-	}
-}
-
-void	draw_wall(t_main *main, int x, int wall_size)
-{
-	int i;
-	int color;
-
-	i = 0;
-	if (main->game->player.rays[x].final_face == NO)
-		color = ft_pixel(0, 0, 255, 255);
-	else if (main->game->player.rays[x].final_face == SO)
-		color = ft_pixel(0, 255, 255, 255);
-	else if (main->game->player.rays[x].final_face == WE)
-		color = ft_pixel(255, 255, 255, 255);
-	else if (main->game->player.rays[x].final_face == EA)
-		color = ft_pixel(255, 0, 255, 255);
-	if (wall_size > 800)
-		wall_size = 800;
-	while ((wall_size / 2) > i)
-	{
-		mlx_put_pixel(main->game->img, x, 400 + i, color);
-		mlx_put_pixel(main->game->img, x, 400 - i, color);
-		i++;
-	}
-}
-
-void	ft_draw(void *param)
-{
-	t_main *main;
-	int i;
-
-	i = 0;
-	main = param;
-	while (i < W_SIZE_X)
-	{
-		draw_ceiling(main, i, 400);
-		draw_floor(main, i, 400);
-		get_wall_size(main, i);
-		draw_wall(main, i, main->game->player.rays[i].wall_size);
-		i++;
-	}
-}
-
+*/
 int	ft_game(t_main *main)
 {
 	main->game->player.posx = 2.5;
@@ -90,6 +33,10 @@ int	ft_game(t_main *main)
 	main->game->player.planex = 0;
 	main->game->player.planey = 0.66;
 	main->game->player.rays = malloc(sizeof(t_ray) * W_SIZE_X);
+	main->game->textures->t_no = mlx_load_png(main->game->textures->no);
+	main->game->textures->t_so = mlx_load_png(main->game->textures->so);
+	main->game->textures->t_ea = mlx_load_png(main->game->textures->ea);
+	main->game->textures->t_we = mlx_load_png(main->game->textures->we);
 	if (!(main->game->mlx = mlx_init(W_SIZE_X, W_SIZE_Y, "MLX42", true)))
 	{
 		puts(mlx_strerror(mlx_errno));

@@ -6,7 +6,7 @@
 #    By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 16:27:12 by slepetit          #+#    #+#              #
-#    Updated: 2023/09/26 18:04:02 by ajoliet          ###   ########.fr        #
+#    Updated: 2023/09/27 11:48:10 by ajoliet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,8 @@ SRC = main.c \
 	game/rays.c \
 	game/rays_utils.c \
 	game/keys.c \
+	game/draw.c \
+	game/texture.c \
 	game/mlx_utils.c
 
 LIBDIR = lib

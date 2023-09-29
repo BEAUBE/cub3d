@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:03:22 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/26 18:21:40 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/28 18:04:32 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,19 @@ void	get_wall_size(t_main *main, int x)
 void	get_dist(t_main *main, t_ray *ray)
 {
 	(void)main;
+	int tmp;
 	if (ray->side == 0)
+	{
 		ray->perpWallDist = ray->sideDistx - ray->deltaDistx;
+		ray->texture_pos = main->game->player.posy + ray->perpWallDist * ray->raydir_y;
+	}
 	else
+	{
 		ray->perpWallDist = ray->sideDisty - ray->deltaDisty;
+		ray->texture_pos = main->game->player.posx + ray->perpWallDist * ray->raydir_x;
+	}
+	tmp = (int)ray->texture_pos;
+	ray->texture_pos -= (float)tmp;
 }
 
 void	get_collision(t_main *main, t_ray *ray)
@@ -73,37 +82,25 @@ void	get_collision(t_main *main, t_ray *ray)
 		{
 			ray->hit = 1;
 			if (ray->side == 1 && ray->raydir_y > 0)
+			{
 				ray->final_face = SO;
+				ray->texture_pos = (main->game->player.posx + ray->sideDistx);
+			}
 			else if (ray->side == 0 && ray->raydir_x > 0)
+			{
 				ray->final_face = EA;
+				ray->texture_pos = (main->game->player.posy + ray->sideDisty);
+			}
 			else if (ray->side == 1)
+			{
 				ray->final_face = NO;
+				ray->texture_pos = (main->game->player.posx + ray->sideDistx);
+			}
 			else
+			{
 				ray->final_face = WE;
+				ray->texture_pos = (main->game->player.posy + ray->sideDisty);
+			}
 		}
 	}
-}
-
-t_ray	*init_ray(t_main *main, int x, t_ray *ray)
-{
-	float	cam;
-
-	cam = 2 * x / (float)W_SIZE_X - 1;
-	ray->raydir_x = main->game->player.dirx + main->game->player.planex * cam;
-	ray->raydir_y = main->game->player.diry + main->game->player.planey * cam;
-	ray->posx = (int)main->game->player.posx;
-	ray->posy = (int)main->game->player.posy;
-	if (ray->raydir_x == 0)
-		ray->deltaDistx = 1e30;
-	else
-		ray->deltaDistx = 1 / ray->raydir_x;
-	if (ray->deltaDistx < 0)
-		ray->deltaDistx *= -1.0;
-	if (ray->raydir_y == 0)
-		ray->deltaDisty = 1e30;
-	else
-		ray->deltaDisty = 1 / ray->raydir_y;
-	if (ray->deltaDisty < 0)
-		ray->deltaDisty *= -1.0;
-	return (ray);
 }
