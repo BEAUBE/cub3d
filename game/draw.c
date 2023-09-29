@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:33:56 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/29 20:01:53 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/29 21:02:09 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	draw_wall(t_main *main, int x, int wall_size)
 	while ((wall_size / 2) > i)
 	{
 		//color = get_texture_color(main, i, x, wall_size);
-		mlx_put_pixel(main->game->img, x, 400 + i, color);
+		mlx_put_pixel(main->game->img, 999 - x, 400 + i, color);
 		//color = get_texture_color(main, i, x, wall_size);
-		mlx_put_pixel(main->game->img, x, 400 - i, color);
+		mlx_put_pixel(main->game->img, 999 - x, 399 - i, color);
 		i++;
 	}
 }
@@ -81,8 +81,8 @@ void	ft_draw(void *param)
 	main = param;
 	while (i < W_SIZE_X)
 	{
-		draw_ceiling(main, i, 400);
-		draw_floor(main, i, 400);
+		draw_ceiling(main, 999 - i, 400);
+		draw_floor(main, 999 - i, 400);
 		get_wall_size(main, i);
 //		get_texture_pos(main, x);
 		draw_wall(main, i, main->game->player.rays[i].wall_size);
