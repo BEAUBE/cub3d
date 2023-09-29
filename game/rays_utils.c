@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:03:22 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/28 18:04:32 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/29 21:18:14 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ void	get_dist(t_main *main, t_ray *ray)
 	if (ray->side == 0)
 	{
 		ray->perpWallDist = ray->sideDistx - ray->deltaDistx;
-		ray->texture_pos = main->game->player.posy + ray->perpWallDist * ray->raydir_y;
+		ray->texture_posx = main->game->player.posy + ray->perpWallDist * ray->raydir_y;
 	}
 	else
 	{
 		ray->perpWallDist = ray->sideDisty - ray->deltaDisty;
-		ray->texture_pos = main->game->player.posx + ray->perpWallDist * ray->raydir_x;
+		ray->texture_posx = main->game->player.posx + ray->perpWallDist * ray->raydir_x;
 	}
-	tmp = (int)ray->texture_pos;
-	ray->texture_pos -= (float)tmp;
+	tmp = (int)ray->texture_posx;
+	ray->texture_posx -= (float)tmp;
 }
 
 void	get_collision(t_main *main, t_ray *ray)
@@ -84,22 +84,22 @@ void	get_collision(t_main *main, t_ray *ray)
 			if (ray->side == 1 && ray->raydir_y > 0)
 			{
 				ray->final_face = SO;
-				ray->texture_pos = (main->game->player.posx + ray->sideDistx);
+				ray->texture_posx = (main->game->player.posx + ray->sideDistx);
 			}
 			else if (ray->side == 0 && ray->raydir_x > 0)
 			{
 				ray->final_face = EA;
-				ray->texture_pos = (main->game->player.posy + ray->sideDisty);
+				ray->texture_posx = (main->game->player.posy + ray->sideDisty);
 			}
 			else if (ray->side == 1)
 			{
 				ray->final_face = NO;
-				ray->texture_pos = (main->game->player.posx + ray->sideDistx);
+				ray->texture_posx = (main->game->player.posx + ray->sideDistx);
 			}
 			else
 			{
 				ray->final_face = WE;
-				ray->texture_pos = (main->game->player.posy + ray->sideDisty);
+				ray->texture_posx = (main->game->player.posy + ray->sideDisty);
 			}
 		}
 	}

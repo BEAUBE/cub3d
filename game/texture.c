@@ -6,14 +6,8 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:49:24 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/27 15:55:40 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/29 23:32:29 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-/*
-int	get_texture_color(t_main *main, int y, int x, int wall_size)
-{
-	
-}
-*/

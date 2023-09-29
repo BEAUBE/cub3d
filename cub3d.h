@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/29 20:22:21 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/09/29 21:18:25 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ typedef struct s_ray
 	int		final_face;
 	int		final_dist;
 	int		final_height;
-	float	texture_pos;
+	float	texture_posx;
+	float	texture_posy;
 	int		hit;
 }	t_ray;
 
