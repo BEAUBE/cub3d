@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/29 19:22:43 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/29 20:25:07 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	get_texture(t_main *main, char *path)
 */
 int	ft_game(t_main *main)
 {
-	main->game->player.posx = 2.5;
-	main->game->player.posy = 2.5;
 	main->game->player.dirx = -1.0;
 	main->game->player.diry = 0;
 	main->game->player.planex = 0;

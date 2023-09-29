@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 05:32:32 by slepetit          #+#    #+#             */
-/*   Updated: 2023/09/14 17:54:25 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/29 20:24:23 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,7 @@ void	ft_fill_game(t_main *main, t_parse *parse)
 	main->game->textures->so = ft_strdup(parse->so);
 	main->game->textures->we = ft_strdup(parse->we);
 	main->game->textures->ea = ft_strdup(parse->ea);
-	main->game->textures->f[0] = parse->f[0];
-	main->game->textures->f[1] = parse->f[1];
-	main->game->textures->f[2] = parse->f[2];
-	main->game->textures->c[0] = parse->c[0];
-	main->game->textures->c[1] = parse->c[1];
-	main->game->textures->c[2] = parse->c[2];
+	main->game->textures->c = ft_pixel(parse->c[0], parse->c[1], parse->c[2], 255);
+	main->game->textures->f = ft_pixel(parse->f[0], parse->f[1], parse->f[2], 255);
 	ft_free_parse(parse, 0);
 }

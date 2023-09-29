@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/27 15:47:25 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/29 20:22:21 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ typedef struct s_textures
 	mlx_texture_t	*t_we;
 	char		*ea;
 	mlx_texture_t	*t_ea;
-	int			f[3];
-	int			c[3];
+	int			f;
+	int			c;
 }	t_textures;
 
 typedef struct s_ray

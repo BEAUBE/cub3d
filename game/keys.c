@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:47:24 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/26 17:56:47 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/09/29 20:42:28 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ void	ft_keys(void *param)
 
 	main = param;
 	player = &main->game->player;
+	if (mlx_is_key_down(main->game->mlx, MLX_KEY_ESCAPE))
+	{
+		mlx_delete_image(main->game->mlx, main->game->img);
+		mlx_terminate(main->game->mlx);
+    }
 	if (mlx_is_key_down(main->game->mlx, MLX_KEY_W))
     {
 		player->posx += player->dirx * 0.03;
