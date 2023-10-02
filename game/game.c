@@ -6,11 +6,25 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/02 15:41:24 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/02 18:25:12 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	get_max_map(t_main *main)
+{
+	int i;
+
+	i = 0;
+	while (main->game->map[i])
+			i++;
+	main->game->max_y_map = i;
+	i = 0;
+	while (main->game->map[1][i])
+			i++;
+	main->game->max_x_map = i;
+}
 
 void	get_texture(t_main *main)
 {

@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/01 18:49:54 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/02 16:53:16 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ typedef struct	s_player
 typedef struct s_game
 {
 	char		**map;
+	int			max_x_map;
+	int			max_y_map;
 	t_player	player;
 	int		orientation;
 	mlx_t		*mlx;
