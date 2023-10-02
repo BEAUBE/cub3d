@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:03:22 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/29 21:18:14 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/02 14:02:16 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	get_dist(t_main *main, t_ray *ray)
 	}
 	tmp = (int)ray->texture_posx;
 	ray->texture_posx -= (float)tmp;
+	if (ray->final_face == WE || ray->final_face == SO)
+		ray->texture_posx = 1 - ray->texture_posx;
 }
 
 void	get_collision(t_main *main, t_ray *ray)

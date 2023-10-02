@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/29 21:18:25 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/01 18:49:54 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ typedef struct s_parse
 typedef struct s_textures
 {
 	char		*no;
-	mlx_texture_t	*t_no;
+	mlx_image_t	*t_no;
 	char		*so;
-	mlx_texture_t	*t_so;
+	mlx_image_t *t_so;
 	char		*we;
-	mlx_texture_t	*t_we;
+	mlx_image_t	*t_we;
 	char		*ea;
-	mlx_texture_t	*t_ea;
+	mlx_image_t	*t_ea;
 	int			f;
 	int			c;
 }	t_textures;
