@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/02 15:31:21 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/02 15:41:24 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,38 @@ void	get_texture(t_main *main)
 	tmp_txtr = mlx_load_png(main->game->textures->we);
 	main->game->textures->t_we = mlx_texture_to_image(main->game->mlx, tmp_txtr);
 	mlx_delete_texture(tmp_txtr);
+}
+
+void	set_orientation(t_main *main)
+{
+	if (main->game->orientation == NO)
+	{
+		main->game->player.dirx = 0;
+		main->game->player.diry = -1.0;
+		main->game->player.planex = -0.66;
+		main->game->player.planey = 0;
+	}
+	else if (main->game->orientation == SO)
+	{
+		main->game->player.dirx = 0;
+		main->game->player.diry = 1.0;
+		main->game->player.planex = 0.66;
+		main->game->player.planey = 0;
+	}
+	else if (main->game->orientation == EA)
+	{
+		main->game->player.dirx = -1.0;
+		main->game->player.diry = 0;
+		main->game->player.planex = 0;
+		main->game->player.planey = 0.66;
+	}
+	else if (main->game->orientation == WE)
+	{
+		main->game->player.dirx = 1.0;
+		main->game->player.diry = 0;
+		main->game->player.planex = 0;
+		main->game->player.planey = -0.66;
+	}
 }
 
 int	ft_game(t_main *main)
@@ -66,6 +98,7 @@ int	ft_game(t_main *main)
 		puts(mlx_strerror(mlx_errno));
 		return(EXIT_FAILURE);
 	}
+	set_orientation(main);
 	get_texture(main);
 	mlx_loop_hook(main->game->mlx, ft_draw, main);
 	mlx_loop_hook(main->game->mlx, ft_keys, main);
