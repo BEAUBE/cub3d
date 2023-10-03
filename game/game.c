@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/02 18:25:12 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/03 13:20:16 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	get_max_map(t_main *main)
 	i = 0;
 	while (main->game->map[i])
 			i++;
-	main->game->max_y_map = i;
+	main->game->max_y_map = i - 1;
 	i = 0;
 	while (main->game->map[1][i])
 			i++;
-	main->game->max_x_map = i;
+	main->game->max_x_map = i - 1;
 }
 
 void	get_texture(t_main *main)
@@ -78,22 +78,9 @@ void	set_orientation(t_main *main)
 
 int	ft_game(t_main *main)
 {
-	/* west main->game->player.dirx = -1.0;
-	main->game->player.diry = 0;
-	main->game->player.planex = 0;
-	main->game->player.planey = 0.66;*/
-/* east	main->game->player.dirx = 1.0;
-	main->game->player.diry = 0;
-	main->game->player.planex = 0;
-	main->game->player.planey = -0.66;*/
-/* south	main->game->player.dirx = 0;
-	main->game->player.diry = 1.0;
-	main->game->player.planex = 0.66;
-	main->game->player.planey = 0;*/
-	main->game->player.dirx = 0;
-	main->game->player.diry = -1.0;
-	main->game->player.planex = -0.66;
-	main->game->player.planey = 0;
+	int i;
+
+	i = 0;
 	main->game->player.rays = malloc(sizeof(t_ray) * W_SIZE_X);
 	if (!(main->game->mlx = mlx_init(W_SIZE_X, W_SIZE_Y, "MLX42", true)))
 	{
@@ -114,6 +101,7 @@ int	ft_game(t_main *main)
 	}
 	set_orientation(main);
 	get_texture(main);
+	get_max_map(main);
 	mlx_loop_hook(main->game->mlx, ft_draw, main);
 	mlx_loop_hook(main->game->mlx, ft_keys, main);
 	mlx_loop(main->game->mlx);
