@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:33:56 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/02 14:11:38 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/03 14:46:02 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	draw_floor(t_main *main, int x, int end)
 {
-	int i;
+	int	i;
 
 	i = W_SIZE_Y - 1;
 	while (i > end)
@@ -26,7 +26,7 @@ void	draw_floor(t_main *main, int x, int end)
 
 void	draw_ceiling(t_main *main, int x, int end)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < end)
@@ -36,16 +36,11 @@ void	draw_ceiling(t_main *main, int x, int end)
 	}
 }
 
-void	get_texture_posy(t_main *main, int x, int wall_size, int y)
-{	
-	main->game->player.rays[x].texture_posy = ((float)y - (((float)W_SIZE_Y - (float)wall_size) / 2.0)) / (float)wall_size;
-}
-
 int	get_color(t_main *main, t_ray *ray)
 {
-	int x;
-	int y;
-	int color;
+	int			x;
+	int			y;
+	int			color;
 	mlx_image_t	*img;
 
 	if (ray->final_face == NO)
@@ -58,14 +53,16 @@ int	get_color(t_main *main, t_ray *ray)
 		img = main->game->textures->t_ea;
 	x = img->width * ray->texture_posx;
 	y = img->height * ray->texture_posy;
-	color = ft_pixel(img->pixels[(img->width * y + x) * 4], img->pixels[(img->width * y + x) * 4 + 1], img->pixels[(img->width * y + x) * 4 + 2], 255);
+	color = ft_pixel(img->pixels[(img->width * y + x) * 4],
+			img->pixels[(img->width * y + x) * 4 + 1],
+			img->pixels[(img->width * y + x) * 4 + 2], 255);
 	return (color);
 }
 
 void	draw_wall(t_main *main, int x, int wall_size)
 {
-	int i;
-	int color;
+	int	i;
+	int	color;
 
 	i = 0;
 	while ((wall_size / 2) > i && i < 400)
@@ -82,8 +79,8 @@ void	draw_wall(t_main *main, int x, int wall_size)
 
 void	ft_draw(void *param)
 {
-	t_main *main;
-	int i;
+	t_main	*main;
+	int		i;
 
 	i = 0;
 	main = param;

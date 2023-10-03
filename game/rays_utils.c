@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:03:22 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/02 14:02:16 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/03 14:42:42 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,10 @@ void	get_collision(t_main *main, t_ray *ray)
 			}
 		}
 	}
+}
+
+void	get_texture_posy(t_main *main, int x, int wall_size, int y)
+{	
+	main->game->player.rays[x].texture_posy = ((float)y - (((float)W_SIZE_Y
+					- (float)wall_size) / 2.0)) / (float)wall_size;
 }
