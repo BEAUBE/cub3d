@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:47:24 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/03 13:26:21 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/03 13:42:25 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,30 @@ void	ft_keys(void *param)
 	if (mlx_is_key_down(main->game->mlx, MLX_KEY_W))
     {
 		printf("%i, %i\n", main->game->max_x_map, main->game->max_y_map);
-		if (player->posx + player->dirx * 0.04 < (float)main->game->max_x_map && player->posx + player->dirx * 0.04 > 1)
+		if (player->posx + player->dirx * 0.08 < (float)main->game->max_x_map && player->posx + player->dirx * 0.08 > 1)
 		player->posx += player->dirx * 0.03;
-		if (player->posy + player->diry * 0.04 < (float)main->game->max_y_map && player->posy + player->diry * 0.04 > 1)
+		if (player->posy + player->diry * 0.08 < (float)main->game->max_y_map && player->posy + player->diry * 0.08 > 1)
 		player->posy += player->diry * 0.03;
     }
 	if (mlx_is_key_down(main->game->mlx, MLX_KEY_S))
     {
-		if (player->posx - player->dirx * 0.04 < (float)main->game->max_x_map && player->posx - player->dirx * 0.04 > 1)
+		if (player->posx - player->dirx * 0.08 < (float)main->game->max_x_map && player->posx - player->dirx * 0.08 > 1)
 		player->posx -= player->dirx * 0.03;
-		if (player->posy - player->diry * 0.04 < (float)main->game->max_y_map && player->posy - player->diry * 0.04 > 1)
+		if (player->posy - player->diry * 0.08 < (float)main->game->max_y_map && player->posy - player->diry * 0.08 > 1)
 		player->posy -= player->diry * 0.03;
     }
 	if (mlx_is_key_down(main->game->mlx, MLX_KEY_D))
     {
-		if (player->posy + player->dirx * 0.04 < (float)main->game->max_y_map && player->posy + player->dirx * 0.04 > 1)
+		if (player->posy + player->dirx * 0.08 < (float)main->game->max_y_map && player->posy + player->dirx * 0.08 > 1)
 		player->posy += player->dirx * 0.03;
-		if (player->posx - player->diry * 0.04 < (float)main->game->max_x_map && player->posx - player->diry * 0.04 > 1)
+		if (player->posx - player->diry * 0.08 < (float)main->game->max_x_map && player->posx - player->diry * 0.08 > 1)
 		player->posx -= player->diry * 0.03;
     }
 	if (mlx_is_key_down(main->game->mlx, MLX_KEY_A))
     {
-		if (player->posy - player->dirx * 0.04 < (float)main->game->max_y_map && player->posy - player->dirx * 0.04 > 1)
+		if (player->posy - player->dirx * 0.08 < (float)main->game->max_y_map && player->posy - player->dirx * 0.08 > 1)
 		player->posy -= player->dirx * 0.03;
+		if (player->posx + player->diry * 0.08 < (float)main->game->max_x_map && player->posx + player->diry * 0.08 > 1)
 		player->posx += player->diry * 0.03;
     }
 	if (mlx_is_key_down(main->game->mlx, MLX_KEY_LEFT))
