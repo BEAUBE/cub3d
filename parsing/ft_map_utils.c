@@ -6,15 +6,11 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 02:22:24 by slepetit          #+#    #+#             */
-/*   Updated: 2023/09/03 19:09:23 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/04 04:48:39 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-/*
-	Renvoie la plus longue ligne de la map
-*/
 
 int	ft_longer_line(char **map)
 {
@@ -31,10 +27,6 @@ int	ft_longer_line(char **map)
 	}
 	return (longer);
 }
-
-/*
-	Regarde si les composants sont bons et qu'il n'y a pas plusieurs pos
-*/
 
 void	ft_check_components(t_parse *parse, char c)
 {

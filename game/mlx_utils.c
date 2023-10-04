@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:32:55 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/04 13:33:46 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/04 04:22:51 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int ft_pixel(int r, int g, int b, int a)
+int	ft_pixel(int r, int g, int b, int a)
 {
-    return (r << 24 | g << 16 | b << 8 | a);
+	return (r << 24 | g << 16 | b << 8 | a);
 }

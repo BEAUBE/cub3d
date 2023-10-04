@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:49:19 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/09/28 15:29:57 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/04 04:27:20 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,4 @@ t_ray	*init_ray(t_main *main, int x, t_ray *ray)
 	if (ray->deltaDisty < 0)
 		ray->deltaDisty *= -1.0;
 	return (ray);
-}
-
-void	get_rays(t_main *main)
-{
-	(void)main;
-	t_ray	*rays;
-
-	rays = malloc(sizeof(t_ray) * W_SIZE_X);
 }

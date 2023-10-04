@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/03 14:46:54 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/04 04:41:17 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,8 @@ void	get_wall_size(t_main *main, int x);
 void	ft_draw(void *param);
 
 void	ft_keys(void *param);
+void    ft_rotate_right(t_player *player);
+void    ft_rotate_left(t_player *player);
 
 void	get_texture_posy(t_main *main, int x, int wall_size, int y);
 

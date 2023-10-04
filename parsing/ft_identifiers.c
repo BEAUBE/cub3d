@@ -6,16 +6,11 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 02:17:43 by slepetit          #+#    #+#             */
-/*   Updated: 2023/09/03 23:25:08 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/04 04:48:30 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-/*
-	parse->floor et parse->ceiling sont a 0, si deja rempli erreur
-	simplement des atoi pour remplir f[2] et c[2] (tableau d'entier)
-*/
 
 void	ft_rgb(t_parse *parse, char **id, char **rgb, char *line)
 {
@@ -46,10 +41,6 @@ void	ft_rgb(t_parse *parse, char **id, char **rgb, char *line)
 	ft_free_tab(rgb);
 }
 
-/*
-	Si couleur, regarde si que des digits si ok, ft_rgb
-*/
-
 void	ft_info(t_parse *parse, char **id, char *line)
 {
 	char	**rgb;
@@ -75,10 +66,6 @@ void	ft_info(t_parse *parse, char **id, char *line)
 	ft_rgb(parse, id, rgb, line);
 }
 
-/*
-	Cherche le bon identifiant si et s'il n'est pas deja rempli 
-*/
-
 void	ft_id(t_parse *parse, char **id, char *line)
 {
 	if (!ft_strcmp(id[0], "NO") && ft_is_fill(parse, parse->no, id, line))
@@ -97,11 +84,6 @@ void	ft_id(t_parse *parse, char **id, char *line)
 		ft_error_identifiers(parse, id, line);
 }
 
-/*
-	Verifie si la ligne != \n soit != exclusivement des espaces (soit erreur)
-	id me sert a voir le nombres d'arguments (ex : C 200,52,52 egal a 2)
-*/
-
 void	ft_check_line(t_parse *parse, char *line)
 {
 	char	**id;
@@ -114,10 +96,6 @@ void	ft_check_line(t_parse *parse, char *line)
 	ft_id(parse, id, line);
 	ft_free_tab(id);
 }
-
-/*
-	lis le fichier et regarde chaque ligne
-*/
 
 void	ft_identifiers(t_parse *parse, char *file)
 {

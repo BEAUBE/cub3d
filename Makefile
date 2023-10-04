@@ -6,7 +6,7 @@
 #    By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 16:27:12 by slepetit          #+#    #+#              #
-#    Updated: 2023/10/04 03:12:39 by slepetit         ###   ########.fr        #
+#    Updated: 2023/10/04 04:40:20 by slepetit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC = main.c \
 	game/rays.c \
 	game/rays_utils.c \
 	game/keys.c \
+	game/ft_keys_rotate.c \
 	game/draw.c \
 	game/mlx_utils.c
 
@@ -41,7 +42,7 @@ CC = clang
 
 CFLAGS = -Wall -Wextra -Werror -I. -g3
 
-MLXFLAGS = -lglfw -pthread -lm -ldl
+MLXFLAGS = -lglfw -pthread -lm -ldl -Lmlx
 
 all: $(NAME)
 

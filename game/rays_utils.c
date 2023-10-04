@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:03:22 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/03 14:42:42 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/04 04:23:15 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ void	get_collision(t_main *main, t_ray *ray)
 	}
 	if (ray->raydir_y < 0)
 	{
-	  ray->stepy = -1;
-	  ray->sideDisty = (main->game->player.posy - (float)ray->posy) * ray->deltaDisty;
+		ray->stepy = -1;
+		ray->sideDisty = (main->game->player.posy - (float)ray->posy) * ray->deltaDisty;
 	}
 	else
 	{
-	  ray->stepy = 1;
-	  ray->sideDisty = ((float)ray->posy + 1.0 - main->game->player.posy) * ray->deltaDisty;
+		ray->stepy = 1;
+		ray->sideDisty = ((float)ray->posy + 1.0 - main->game->player.posy) * ray->deltaDisty;
 	}
 	while (!ray->hit)
 	{

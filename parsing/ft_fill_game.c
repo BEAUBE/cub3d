@@ -6,15 +6,11 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 05:32:32 by slepetit          #+#    #+#             */
-/*   Updated: 2023/10/04 03:08:12 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/04 04:49:51 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-/*
-	un strdup de la map
-*/
 
 char	**ft_cpy_map(char **s, t_game *game)
 {
@@ -32,10 +28,6 @@ char	**ft_cpy_map(char **s, t_game *game)
 	return (game->map);
 }
 
-/*
-	Rempli l'orientation, tu peux changer en degres
-*/
-
 void	ft_orientation(t_game *game, char c)
 {
 	if (c == 'N')
@@ -47,10 +39,6 @@ void	ft_orientation(t_game *game, char c)
 	if (c == 'E')
 		game->orientation = 4;
 }
-
-/*
-	Trouve la position du joueur
-*/
 
 int	ft_find_pos(char **map, t_game *game)
 {
@@ -81,10 +69,6 @@ int	ft_find_pos(char **map, t_game *game)
 	return (1);
 }
 
-/*
-	Rempli les infos de la strut parse dans la struct game
-*/
-
 void	ft_fill_game(t_main *main, t_parse *parse)
 {
 	main->game = ft_calloc(sizeof(t_game), 1);
@@ -96,7 +80,9 @@ void	ft_fill_game(t_main *main, t_parse *parse)
 	main->game->textures->so = ft_strdup(parse->so);
 	main->game->textures->we = ft_strdup(parse->we);
 	main->game->textures->ea = ft_strdup(parse->ea);
-	main->game->textures->c = ft_pixel(parse->c[0], parse->c[1], parse->c[2], 255);
-	main->game->textures->f = ft_pixel(parse->f[0], parse->f[1], parse->f[2], 255);
+	main->game->textures->c = ft_pixel(parse->c[0], parse->c[1], \
+		parse->c[2], 255);
+	main->game->textures->f = ft_pixel(parse->f[0], parse->f[1], \
+		parse->f[2], 255);
 	ft_free_parse(parse, 0);
 }

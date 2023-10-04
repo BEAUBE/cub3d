@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/04 03:20:01 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/04 04:20:36 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,17 @@ void	set_orientation(t_main *main)
 	}
 }
 
+void	ft_play(t_main *main)
+{
+	set_orientation(main);
+	get_texture(main);
+	get_max_map(main);
+	mlx_loop_hook(main->game->mlx, ft_draw, main);
+	mlx_loop_hook(main->game->mlx, ft_keys, main);
+	mlx_loop(main->game->mlx);
+	mlx_terminate(main->game->mlx);
+}
+
 int	ft_game(t_main *main)
 {
 	main->game->player.rays = malloc(sizeof(t_ray) * W_SIZE_X);
@@ -98,13 +109,7 @@ int	ft_game(t_main *main)
 		puts(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
-	set_orientation(main);
-	get_texture(main);
-	get_max_map(main);
-	mlx_loop_hook(main->game->mlx, ft_draw, main);
-	mlx_loop_hook(main->game->mlx, ft_keys, main);
-	mlx_loop(main->game->mlx);
-	mlx_terminate(main->game->mlx);
+	ft_play(main);
 	ft_free_game(main->game);
 	return (EXIT_SUCCESS);
 }

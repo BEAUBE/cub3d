@@ -6,15 +6,11 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 03:13:19 by slepetit          #+#    #+#             */
-/*   Updated: 2023/09/04 01:02:07 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/04 04:47:54 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-/*
-	Retourne le nombre de ligne du fichier
-*/
 
 int	ft_get_lines(char *file)
 {
@@ -29,10 +25,6 @@ int	ft_get_lines(char *file)
 	return (lines);
 }
 
-/*
-	Atteindre le debut de la map
-*/
-
 char	*ft_start_map(int fd, char *tmp, int *i, int limit)
 {
 	while (*i <= limit)
@@ -43,11 +35,6 @@ char	*ft_start_map(int fd, char *tmp, int *i, int limit)
 	}
 	return (tmp);
 }
-
-/*
-	parse->limit correspond au debut de la map (ex ligne 10)
-	si dans la map (apres limit) \n error
-*/
 
 t_parse	*ft_get_map(t_parse *parse, char *file)
 {
@@ -77,10 +64,6 @@ t_parse	*ft_get_map(t_parse *parse, char *file)
 	return (parse);
 }
 
-/*
-	Passe les \n avant le debut de la map
-*/
-
 void	ft_pass_newline(int fd, char *tmp, int *i)
 {
 	free(tmp);
@@ -93,15 +76,6 @@ void	ft_pass_newline(int fd, char *tmp, int *i)
 	}
 	free(tmp);
 }
-
-/*
-	cherche le debut de la map
-	parse->limit ici m'aide a savoir si j'ai bien passer tous les idenfiants (7)
-	i, m'indique le nombre de ligne avant le debut de la map
-	je passe apres tous les \n toujours en i++
-	je dis que parse->limit = i - 1
-	i - 1 car j'ai lu une ligne pour verifier donc je me mets a celle d'avant
-*/
 
 void	ft_map_limits(t_parse *parse, char *file)
 {
