@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 02:21:47 by slepetit          #+#    #+#             */
-/*   Updated: 2023/08/29 05:58:04 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/04 03:27:23 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_free_game(t_game *game)
 		free(game->textures);
 	if (game->map)
 		ft_free_tab(game->map);
+	free(game->player.rays);
 	free(game);
 }
 

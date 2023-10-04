@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 05:32:32 by slepetit          #+#    #+#             */
-/*   Updated: 2023/09/29 20:24:23 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/04 03:08:12 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ char	**ft_cpy_map(char **s, t_game *game)
 	while (s[i])
 	{
 		game->map[i] = ft_strdup(s[i]);
-		ft_printf("%s\n", game->map[i]);
 		i++;
 	}
 	return (game->map);

@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/03 15:15:57 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/04 03:20:01 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,6 @@ void	set_orientation(t_main *main)
 
 int	ft_game(t_main *main)
 {
-	int	i;
-
-	i = 0;
 	main->game->player.rays = malloc(sizeof(t_ray) * W_SIZE_X);
 	main->game->mlx = mlx_init(W_SIZE_X, W_SIZE_Y, "MLX42", true);
 	if (!main->game->mlx)
@@ -108,5 +105,6 @@ int	ft_game(t_main *main)
 	mlx_loop_hook(main->game->mlx, ft_keys, main);
 	mlx_loop(main->game->mlx);
 	mlx_terminate(main->game->mlx);
+	ft_free_game(main->game);
 	return (EXIT_SUCCESS);
 }

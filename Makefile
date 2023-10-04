@@ -6,7 +6,7 @@
 #    By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 16:27:12 by slepetit          #+#    #+#              #
-#    Updated: 2023/10/02 13:51:53 by ajoliet          ###   ########.fr        #
+#    Updated: 2023/10/04 03:12:39 by slepetit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ CC = clang
 
 CFLAGS = -Wall -Wextra -Werror -I. -g3
 
-MLXFLAGS = -ldl -lglfw -pthread -lm
+MLXFLAGS = -lglfw -pthread -lm -ldl
 
 all: $(NAME)
 

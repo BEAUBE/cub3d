@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:47:24 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/03 13:42:25 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/04 03:27:48 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_keys(void *param)
 	player = &main->game->player;
 	if (mlx_is_key_down(main->game->mlx, MLX_KEY_W))
     {
-		printf("%i, %i\n", main->game->max_x_map, main->game->max_y_map);
 		if (player->posx + player->dirx * 0.08 < (float)main->game->max_x_map && player->posx + player->dirx * 0.08 > 1)
 		player->posx += player->dirx * 0.03;
 		if (player->posy + player->diry * 0.08 < (float)main->game->max_y_map && player->posy + player->diry * 0.08 > 1)
@@ -69,8 +68,5 @@ void	ft_keys(void *param)
 		player->planey = oldplanex * sin(0.04) + player->planey * cos(0.04);
 	}
 	if (mlx_is_key_down(main->game->mlx, MLX_KEY_ESCAPE))
-	{
-		mlx_delete_image(main->game->mlx, main->game->img);
 		mlx_close_window(main->game->mlx);
-    }
 }
