@@ -6,7 +6,7 @@
 #    By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 16:27:12 by slepetit          #+#    #+#              #
-#    Updated: 2023/10/04 04:40:20 by slepetit         ###   ########.fr        #
+#    Updated: 2023/10/06 05:18:09 by slepetit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC = main.c \
 	game/keys.c \
 	game/ft_keys_rotate.c \
 	game/draw.c \
-	game/mlx_utils.c
+	game/mlx_utils.c \
+	game/textures.c
 
 LIBDIR = lib
 LIBLIB = lib/libft.a

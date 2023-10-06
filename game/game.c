@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/04 04:20:36 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/06 06:07:44 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,6 @@ void	get_max_map(t_main *main)
 	while (main->game->map[1][i])
 			i++;
 	main->game->max_x_map = i - 1;
-}
-
-void	get_texture(t_main *main)
-{
-	mlx_texture_t	*tmp_txtr;
-
-	tmp_txtr = mlx_load_png(main->game->textures->no);
-	main->game->textures->t_no = mlx_texture_to_image(main->game->mlx,
-			tmp_txtr);
-	mlx_delete_texture(tmp_txtr);
-	tmp_txtr = mlx_load_png(main->game->textures->so);
-	main->game->textures->t_so = mlx_texture_to_image(main->game->mlx,
-			tmp_txtr);
-	mlx_delete_texture(tmp_txtr);
-	tmp_txtr = mlx_load_png(main->game->textures->ea);
-	main->game->textures->t_ea = mlx_texture_to_image(main->game->mlx,
-			tmp_txtr);
-	mlx_delete_texture(tmp_txtr);
-	tmp_txtr = mlx_load_png(main->game->textures->we);
-	main->game->textures->t_we = mlx_texture_to_image(main->game->mlx,
-			tmp_txtr);
-	mlx_delete_texture(tmp_txtr);
 }
 
 void	set_orientation(t_main *main)
@@ -84,6 +62,7 @@ void	ft_play(t_main *main)
 	mlx_loop_hook(main->game->mlx, ft_draw, main);
 	mlx_loop_hook(main->game->mlx, ft_keys, main);
 	mlx_loop(main->game->mlx);
+	// mlx_delete_image(main->game->mlx, main->game->img);
 	mlx_terminate(main->game->mlx);
 }
 
