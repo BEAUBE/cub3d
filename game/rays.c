@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:49:19 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/04 04:27:20 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:46:50 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,10 @@ t_ray	*init_ray(t_main *main, int x, t_ray *ray)
 	if (ray->deltaDisty < 0)
 		ray->deltaDisty *= -1.0;
 	return (ray);
+}
+
+void	get_texture_posy(t_main *main, int x, int wall_size, int y)
+{	
+	main->game->player.rays[x].texture_posy = ((float)y - (((float)W_SIZE_Y
+					- (float)wall_size) / 2.0)) / (float)wall_size;
 }

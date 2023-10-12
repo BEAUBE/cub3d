@@ -6,7 +6,7 @@
 /*   By: ajoliet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:03:22 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/04 04:23:15 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:46:58 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,19 @@ void	get_wall_size(t_main *main, int x)
 
 void	get_dist(t_main *main, t_ray *ray)
 {
-	(void)main;
-	int tmp;
+	int	tmp;
+
 	if (ray->side == 0)
 	{
 		ray->perpWallDist = ray->sideDistx - ray->deltaDistx;
-		ray->texture_posx = main->game->player.posy + ray->perpWallDist * ray->raydir_y;
+		ray->texture_posx = main->game->player.posy
+			+ ray->perpWallDist * ray->raydir_y;
 	}
 	else
 	{
 		ray->perpWallDist = ray->sideDisty - ray->deltaDisty;
-		ray->texture_posx = main->game->player.posx + ray->perpWallDist * ray->raydir_x;
+		ray->texture_posx = main->game->player.posx
+			+ ray->perpWallDist * ray->raydir_x;
 	}
 	tmp = (int)ray->texture_posx;
 	ray->texture_posx -= (float)tmp;
@@ -43,29 +45,63 @@ void	get_dist(t_main *main, t_ray *ray)
 		ray->texture_posx = 1 - ray->texture_posx;
 }
 
-void	get_collision(t_main *main, t_ray *ray)
+void	get_final_infos(t_main *main, t_ray *ray)
 {
-	ray->hit = 0;
+	ray->hit = 1;
+	if (ray->side == 1 && ray->raydir_y > 0)
+	{
+		ray->final_face = SO;
+		ray->texture_posx = (main->game->player.posx + ray->sideDistx);
+	}
+	else if (ray->side == 0 && ray->raydir_x > 0)
+	{
+		ray->final_face = EA;
+		ray->texture_posx = (main->game->player.posy + ray->sideDisty);
+	}
+	else if (ray->side == 1)
+	{
+		ray->final_face = NO;
+		ray->texture_posx = (main->game->player.posx + ray->sideDistx);
+	}
+	else
+	{
+		ray->final_face = WE;
+		ray->texture_posx = (main->game->player.posy + ray->sideDisty);
+	}
+}
+
+void	do_first_side(t_main *main, t_ray *ray)
+{
 	if (ray->raydir_x < 0)
 	{
 		ray->stepx = -1;
-		ray->sideDistx = (main->game->player.posx - (float)ray->posx) * ray->deltaDistx;
+		ray->sideDistx = (main->game->player.posx - (float)ray->posx)
+			* ray->deltaDistx;
 	}
 	else
 	{
 		ray->stepx = 1;
-		ray->sideDistx = ((float)ray->posx + 1.0 - main->game->player.posx) * ray->deltaDistx;
+		ray->sideDistx = ((float)ray->posx + 1.0 - main->game->player.posx)
+			* ray->deltaDistx;
 	}
 	if (ray->raydir_y < 0)
 	{
 		ray->stepy = -1;
-		ray->sideDisty = (main->game->player.posy - (float)ray->posy) * ray->deltaDisty;
+		ray->sideDisty = (main->game->player.posy - (float)ray->posy)
+			* ray->deltaDisty;
 	}
 	else
 	{
 		ray->stepy = 1;
-		ray->sideDisty = ((float)ray->posy + 1.0 - main->game->player.posy) * ray->deltaDisty;
+		ray->sideDisty = ((float)ray->posy + 1.0 - main->game->player.posy)
+			* ray->deltaDisty;
 	}
+}
+
+void	get_collision(t_main *main, t_ray *ray)
+{
+	ray->hit = 0;
+	do_first_side(main, ray);
 	while (!ray->hit)
 	{
 		if (ray->sideDistx < ray->sideDisty)
@@ -80,35 +116,8 @@ void	get_collision(t_main *main, t_ray *ray)
 			ray->posy += ray->stepy;
 			ray->side = 1;
 		}
-		if (main->game->map[ray->posy][ray->posx] && main->game->map[ray->posy][ray->posx] == '1')
-		{
-			ray->hit = 1;
-			if (ray->side == 1 && ray->raydir_y > 0)
-			{
-				ray->final_face = SO;
-				ray->texture_posx = (main->game->player.posx + ray->sideDistx);
-			}
-			else if (ray->side == 0 && ray->raydir_x > 0)
-			{
-				ray->final_face = EA;
-				ray->texture_posx = (main->game->player.posy + ray->sideDisty);
-			}
-			else if (ray->side == 1)
-			{
-				ray->final_face = NO;
-				ray->texture_posx = (main->game->player.posx + ray->sideDistx);
-			}
-			else
-			{
-				ray->final_face = WE;
-				ray->texture_posx = (main->game->player.posy + ray->sideDisty);
-			}
-		}
+		if (main->game->map[ray->posy][ray->posx]
+				&& main->game->map[ray->posy][ray->posx] == '1')
+			get_final_infos(main, ray);
 	}
-}
-
-void	get_texture_posy(t_main *main, int x, int wall_size, int y)
-{	
-	main->game->player.rays[x].texture_posy = ((float)y - (((float)W_SIZE_Y
-					- (float)wall_size) / 2.0)) / (float)wall_size;
 }

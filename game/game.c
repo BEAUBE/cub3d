@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/06 06:07:44 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:47:18 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	ft_play(t_main *main)
 	mlx_loop_hook(main->game->mlx, ft_draw, main);
 	mlx_loop_hook(main->game->mlx, ft_keys, main);
 	mlx_loop(main->game->mlx);
-	// mlx_delete_image(main->game->mlx, main->game->img);
 	mlx_terminate(main->game->mlx);
 }
 
