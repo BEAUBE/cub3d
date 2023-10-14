@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 02:17:43 by slepetit          #+#    #+#             */
-/*   Updated: 2023/10/04 04:48:30 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/14 23:30:52 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void	ft_check_line(t_parse *parse, char *line)
 	if (ft_spaces(line) && *line != '\n')
 		ft_error_identifiers(parse, NULL, line);
 	id = ft_split(line, 32);
+	while (ft_tablen(id) > 2)
+		id = ft_split_all(id);
 	if (ft_tablen(id) != 2 && ft_strlen(line) == 1 && *line != '\n')
 		ft_error_identifiers(parse, id, line);
 	ft_id(parse, id, line);

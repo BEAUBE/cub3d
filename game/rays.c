@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:49:19 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/12 13:46:50 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/14 23:35:38 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ t_ray	*init_ray(t_main *main, int x, t_ray *ray)
 	ray->posx = (int)main->game->player.posx;
 	ray->posy = (int)main->game->player.posy;
 	if (ray->raydir_x == 0)
-		ray->deltaDistx = 1e30;
+		ray->delta_distx = 1e30;
 	else
-		ray->deltaDistx = 1 / ray->raydir_x;
-	if (ray->deltaDistx < 0)
-		ray->deltaDistx *= -1.0;
+		ray->delta_distx = 1 / ray->raydir_x;
+	if (ray->delta_distx < 0)
+		ray->delta_distx *= -1.0;
 	if (ray->raydir_y == 0)
-		ray->deltaDisty = 1e30;
+		ray->delta_disty = 1e30;
 	else
-		ray->deltaDisty = 1 / ray->raydir_y;
-	if (ray->deltaDisty < 0)
-		ray->deltaDisty *= -1.0;
+		ray->delta_disty = 1 / ray->raydir_y;
+	if (ray->delta_disty < 0)
+		ray->delta_disty *= -1.0;
 	return (ray);
 }
 

@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/06 05:07:04 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/14 23:36:59 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_textures
 	char		*no;
 	mlx_image_t	*t_no;
 	char		*so;
-	mlx_image_t *t_so;
+	mlx_image_t	*t_so;
 	char		*we;
 	mlx_image_t	*t_we;
 	char		*ea;
@@ -61,11 +61,11 @@ typedef struct s_ray
 	float	cam_var;
 	float	raydir_x;
 	float	raydir_y;
-	float	sideDistx;
-	float	sideDisty;
-	float	deltaDistx;
-	float	deltaDisty;
-	float	perpWallDist;
+	float	side_distx;
+	float	side_disty;
+	float	delta_distx;
+	float	delta_disty;
+	float	perp_wall_dist;
 	int		wall_size;
 	int		posx;
 	int		posy;
@@ -80,7 +80,7 @@ typedef struct s_ray
 	int		hit;
 }	t_ray;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	float	posx;
 	float	posy;
@@ -97,7 +97,7 @@ typedef struct s_game
 	int			max_x_map;
 	int			max_y_map;
 	t_player	player;
-	int		orientation;
+	int			orientation;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	t_textures	*textures;
@@ -146,6 +146,7 @@ void	ft_fill_game(t_main *main, t_parse *parse);
 
 // UTILS
 int		ft_tablen(char **tab);
+char	**ft_split_all(char **id);
 
 // FREE ERROR
 void	ft_error_newline(t_parse *parse, char *s1, char *s2);
@@ -168,8 +169,8 @@ void	get_wall_size(t_main *main, int x);
 //draw.c
 void	ft_draw(void *param);
 void	ft_keys(void *param);
-void    ft_rotate_right(t_player *player);
-void    ft_rotate_left(t_player *player);
+void	ft_rotate_right(t_player *player);
+void	ft_rotate_left(t_player *player);
 
 //texture.c
 void	get_texture_posy(t_main *main, int x, int wall_size, int y);
