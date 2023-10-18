@@ -6,7 +6,7 @@
 #    By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 16:27:12 by slepetit          #+#    #+#              #
-#    Updated: 2023/10/14 22:01:25 by slepetit         ###   ########.fr        #
+#    Updated: 2023/10/18 20:11:56 by slepetit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC = main.c \
 	parsing/ft_get_map.c \
 	parsing/ft_error.c \
 	parsing/ft_fill_game.c \
+	parsing/ft_fill_game_utils.c \
 	game/game.c \
 	game/rays.c \
 	game/rays_utils.c \

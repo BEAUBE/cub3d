@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/14 23:36:59 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/18 20:12:21 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,8 @@ char	**ft_cpy_map(char **s, t_game *game);
 void	ft_orientation(t_game *game, char c);
 int		ft_find_pos(char **map, t_game *game);
 void	ft_fill_game(t_main *main, t_parse *parse);
+char	**ft_set_walls(int height, int width);
+char	**ft_fill_walls(char **tmp, char **map);
 
 // UTILS
 int		ft_tablen(char **tab);
