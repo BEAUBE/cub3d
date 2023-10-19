@@ -56,8 +56,8 @@ int	ft_find_pos(char **map, t_game *game)
 			{
 				if (game->orientation)
 					return (0);
-				game->player.posx = j + 0.5;
-				game->player.posy = i + 0.5;
+				game->player.posx = j + 1.5;
+				game->player.posy = i + 1.5;
 				ft_orientation(game, map[i][j]);
 			}
 			j++;

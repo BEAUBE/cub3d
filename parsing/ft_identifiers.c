@@ -47,7 +47,7 @@ void	ft_info(t_parse *parse, char **id, char *line)
 	int		i;
 	int		j;
 
-	i = 0;
+	i = -1;
 	rgb = ft_fill_rgb(parse, id, line);
 	while (rgb[++i])
 	{
@@ -61,7 +61,6 @@ void	ft_info(t_parse *parse, char **id, char *line)
 			}
 			j++;
 		}
-		i++;
 	}
 	ft_rgb(parse, id, rgb, line);
 }
