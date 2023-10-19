@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 01:47:00 by y ajoliet         #+#    #+#             */
-/*   Updated: 2023/10/14 23:37:51 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:17:55 by ajoliet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ void	ft_key_w(t_main *main, t_player *player)
 	if (player->posy + player->diry * 0.1 < (float)main->game->max_y_map - 0.2
 		&& player->posy + player->diry * 0.1 > 1.2)
 		player->posy += player->diry * 0.03;
-	printf("y : %f\n", player->posy);
-	printf("x : %f\n", player->posx);
 }
 
 void	ft_keys(void *param)
