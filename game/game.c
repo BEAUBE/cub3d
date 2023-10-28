@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:18:06 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/10/12 13:47:18 by ajoliet          ###   ########.fr       */
+/*   Updated: 2023/10/28 23:41:53 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	get_max_map(t_main *main)
 
 	i = 0;
 	while (main->game->map[i])
-			i++;
+		i++;
 	main->game->max_y_map = i - 1;
 	i = 0;
 	while (main->game->map[1][i])
-			i++;
+		i++;
 	main->game->max_x_map = i - 1;
 }
 
