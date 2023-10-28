@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:36:09 by slepetit          #+#    #+#             */
-/*   Updated: 2023/10/17 01:44:15 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/28 23:36:22 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ t_main	*ft_parsing(t_main *main, char *file, int ac)
 	else
 	{
 		ft_identifiers(main->parse, file);
-		ft_map_limits(main->parse, file);
 		ft_get_map(main->parse, file);
 		ft_map(main->parse);
 		ft_fill_game(main, main->parse);

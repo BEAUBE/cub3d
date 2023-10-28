@@ -1,8 +1,17 @@
 
-NO ./textures/amogus.png
-SO ./textures/amogus.png
-WE ./textures/amogus.png
-EA ./textures/amogus.png
+NO ./textur   es/    amogus.png
+
+C 225,     30        ,   0
+dfghjk
+SO ./tex   tur   es/    amogus.p   ng
+WE ./tex tur e    s/amog us. png
+
+EA ./       tex t ure s/amogu s.png
+
+
+MAIS NAN
+F                  220,    100,   0
+
 
 
 11111111111
@@ -10,8 +19,3 @@ EA ./textures/amogus.png
 11E00000011
 10000000001
 11111111111
-
-
-
-F 220,100,0
-C 225,     30        ,   0

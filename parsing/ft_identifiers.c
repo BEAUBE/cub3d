@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 02:17:43 by slepetit          #+#    #+#             */
-/*   Updated: 2023/10/14 23:30:52 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/10/28 23:11:29 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,9 @@ void	ft_identifiers(t_parse *parse, char *file)
 {
 	char	*line;
 	int		fd;
+	int		i;
 
+	i = 1;
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
@@ -112,8 +114,10 @@ void	ft_identifiers(t_parse *parse, char *file)
 			break ;
 		free(line);
 		line = get_next_line(fd);
+		i++;
 	}
 	free(line);
 	ft_check_identifiers(parse);
+	parse->limit = i;
 	close(fd);
 }
