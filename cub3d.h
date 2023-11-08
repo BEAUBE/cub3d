@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafissie <mafissie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/11/08 17:21:26 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/11/08 21:05:05 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ t_main	*ft_parsing(t_main *main, char *file, int ac);
 
 // IDENTIFIERS
 int		ft_spaces(char *line);
-int		ft_comas(char *s);
 char	**ft_fill_rgb(t_parse *parse, char **id, char *line);
 void	ft_check_identifiers(t_parse *parse);
 int		ft_is_fill(t_parse *parse, char *s, char **id, char *line);
@@ -148,6 +147,7 @@ char	**ft_set_walls(int height, int width);
 char	**ft_fill_walls(char **tmp, char **map);
 
 // UTILS
+int		ft_comas(char *s);
 int		ft_tablen(char **tab);
 char	**ft_split_all(char **id);
 
