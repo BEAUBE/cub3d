@@ -6,7 +6,7 @@
 /*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:22:57 by ajoliet           #+#    #+#             */
-/*   Updated: 2023/11/08 21:05:05 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/11/08 21:07:18 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ void	ft_check_line(t_parse *parse, char *line);
 void	ft_identifiers(t_parse *parse, char *file);
 
 // MAP
-void	ft_map_limits(t_parse *parse, char *file);
 t_parse	*ft_get_map(t_parse *parse, char *file);
 int		ft_get_lines(char *file);
 int		ft_longer_line(char **map);
@@ -162,8 +161,6 @@ void	ft_free_tab(char **tab);
 
 // GAME
 int		ft_game(t_main *main);
-
-void	get_rays(t_main *main);
 t_ray	*init_ray(t_main *main, int x, t_ray *ray);
 void	get_collision(t_main *main, t_ray *ray);
 void	get_dist(t_main *main, t_ray *ray);
@@ -177,7 +174,6 @@ void	ft_rotate_left(t_player *player);
 
 //texture.c
 void	get_texture_posy(t_main *main, int x, int wall_size, int y);
-int		get_texture_color(t_main *main, int y, int x, int wall_size);
 int		get_texture(t_main *main);
 
 // MLX
