@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_identifiers_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mafissie <mafissie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 04:21:42 by slepetit          #+#    #+#             */
-/*   Updated: 2023/11/02 23:10:19 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/11/08 19:45:24 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ char	**ft_fill_rgb(t_parse *parse, char **id, char *line)
 {
 	char	**rgb;
 
+	if (id[1][0] == ',' || ft_comas(id[1]))
+		ft_error_identifiers(parse, id, line);
 	rgb = ft_split(id[1], ',');
-	if (ft_tablen(rgb) != 3)
+	if (ft_tablen(rgb) != 3 || ft_tablen(rgb) > 3
+		|| ft_strlen(rgb[2]) == 1)
 	{
 		ft_free_tab(rgb);
 		ft_error_identifiers(parse, id, line);

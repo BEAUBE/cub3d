@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mafissie <mafissie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 23:28:47 by slepetit          #+#    #+#             */
-/*   Updated: 2023/10/14 23:30:27 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:21:00 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,22 @@ char	**ft_split_all(char **id)
 	ft_free_tab(id);
 	free(tmp);
 	return (tab);
+}
+
+int	ft_comas(char *s)
+{
+	int	i;
+	int	comas;
+
+	i = 0;
+	comas = 0;
+	while (s[i])
+	{
+		if (s[i] == ',')
+			comas++;
+		i++;
+	}
+	if (comas != 2)
+		return (1);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mafissie <mafissie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:36:09 by slepetit          #+#    #+#             */
-/*   Updated: 2023/10/28 23:36:22 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:37:56 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_file(char *file)
 
 	if (open(file, F_OK, X_OK) < 0)
 	{
+		ft_putstr_fd("Error\n", 2);
 		perror(file);
 		exit(2);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_identifiers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slepetit <slepetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mafissie <mafissie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 02:17:43 by slepetit          #+#    #+#             */
-/*   Updated: 2023/11/02 23:10:41 by slepetit         ###   ########.fr       */
+/*   Updated: 2023/11/08 19:44:25 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	ft_id(t_parse *parse, char **id, char *line)
 		ft_info(parse, id, line);
 	else if (!ft_strcmp(id[0], "C"))
 		ft_info(parse, id, line);
-	else if (*line != '\n')
+	else if (*line != '\n' && !ft_spaces(line))
 		ft_error_identifiers(parse, id, line);
 }
 
@@ -87,8 +87,6 @@ void	ft_check_line(t_parse *parse, char *line)
 {
 	char	**id;
 
-	if (ft_spaces(line) && *line != '\n')
-		ft_error_identifiers(parse, NULL, line);
 	id = ft_split(line, 32);
 	while (ft_tablen(id) > 2)
 		id = ft_split_all(id);
