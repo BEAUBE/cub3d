@@ -1,20 +1,20 @@
 C 0,16,64
-NO ./src/texture/207.png
+NO ./textures/207.png
 
 
 
 
-EA ./src/texture/216.png
+EA ./textures/216.png
 
 
 F 33,33,33
 
-WE ./src/texture/215.png
+WE ./textures/215.png
 
 
 
 
-SO ./src/texture/214.png
+SO ./textures/214.png
 
 
                              111111111111

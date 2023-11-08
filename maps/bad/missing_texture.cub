@@ -1,7 +1,7 @@
-NO ./src/texture/207.png
-SO ./src/texture/214.png
+NO ./textures/207.png
+SO ./textures/214.png
 
-EA ./src/texture/216.png
+EA ./textures/216.png
 
 F 33,33,33
 C 0,16,64

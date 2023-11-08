@@ -1,7 +1,7 @@
-NO ./src/texture/207.png
-SO ./src/texture/214.png
-WE ./src/texture/215.png
-EA ./src/texture/216.png
+NO ./textures/207.png
+SO ./textures/214.png
+WE ./textures/215.png
+EA ./textures/216.png
 
 C 225,30,0
 
